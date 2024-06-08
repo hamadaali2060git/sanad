@@ -4,8 +4,8 @@
 
 
 
-  <script src="{{asset('admin/vendors/js/editors/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
-  <script src="  {{asset('admin/js/scripts/editors/editor-ckeditor.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin/vendors/js/editors/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
+<script src="  {{asset('admin/js/scripts/editors/editor-ckeditor.js')}}" type="text/javascript"></script>
 
 <!--  <section id="basic">
           <div class="row">
@@ -73,138 +73,150 @@
 
 
 
-		<div class="content-header row">
-			        <div class="content-header-left col-md-12 col-12 mb-2 breadcrumb-new">
-			          <h3 class="content-header-title mb-0 d-inline-block">الاعدادات</h3><br>
-			          <div class="row breadcrumbs-top d-inline-block">
-			            <div class="breadcrumb-wrapper col-12">
-			              <ol class="breadcrumb">
-			                <li class="breadcrumb-item"><a href="index.html">الرئيسية</a>
-			                </li>
+<div class="content-header row">
+	<div class="content-header-left col-md-12 col-12 mb-2 breadcrumb-new">
+		<h3 class="content-header-title mb-0 d-inline-block">الاعدادات</h3><br>
+		<div class="row breadcrumbs-top d-inline-block">
+			<div class="breadcrumb-wrapper col-12">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="index.html">الرئيسية</a>
+					</li>
 
-			                <li class="breadcrumb-item active">الاعدادات
-			                </li>
-			              </ol>
-			            </div>
-			          </div>
-			        </div>
-
-			        @if (session('success'))
-			            <div class="alert alert-success">
-			                {{ session('success') }}
-			            </div>
-			        @endif
-
-			        @if (count($errors) > 0)
-			                <div class="alert alert-danger">
-			                    <button aria-label="Close" class="close" data-dismiss="alert" type="button">
-			                        <span aria-hidden="true">&times;</span>
-			                    </button>
-			                    <strong>خطا</strong>
-			                    <ul>
-			                        @foreach ($errors->all() as $error)
-			                        <li>{{ $error }}</li>
-			                        @endforeach
-			                    </ul>
-			                </div>
-			                @endif
+					<li class="breadcrumb-item active">الاعدادات
+					</li>
+				</ol>
+			</div>
 		</div>
-		<section id="keytable">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
+	</div>
 
-                <div class="card-content collapse show">
-                  <div class="card-body card-dashboard">
-                   	<div class="card-body">
-										<form action="{{url('admin/settings/update')}}" method="POST"
-								                name="le_form"  enctype="multipart/form-data">
-								                                @csrf
-											<input type="hidden" name="id" value="{{Auth::user()->id}}">
-										<div class="row form-row">
-											<div class="form-group col-md-6 col-sm-6">
-												<label>العنوان العربي</label>
-												<input type="text" name="title_ar" class="form-control" value="{{$settings->title_ar}}">
-											</div>
-											<div class="form-group col-md-6 col-sm-6">
-												<label>العنوان انجليزي</label>
-												<input type="text" name="title_en" class="form-control" value="{{$settings->title_en}}">
-											</div>
-											<div class="form-group col-md-6 col-sm-6">
-												<label>رقم الهاتف</label>
-												<input type="text" name="phone" class="form-control" value="{{$settings->phone}}">
-											</div>
-											<div class="form-group col-md-6 col-sm-6">
-												<label> email</label>
-												<input type="text" name="mail" class="form-control" value="{{$settings->mail}}">
-											</div>
+	@if (session('success'))
+	<div class="alert alert-success">
+		{{ session('success') }}
+	</div>
+	@endif
 
-											<div class="form-group col-md-6 col-sm-6">
-												<label>الوصف </label>
-												<textarea name="desc_ar" id="ckeditor" cols="30" rows="15"  class="form-control ckeditor">{{$settings->desc_ar}}</textarea>
-											</div>
-											<div class="form-group col-md-6 col-sm-6">
-												<label>الوصف انجليزي</label>
-												<textarea name="desc_en" id="ckeditor" cols="30" rows="15"  class="form-control ckeditor">{{$settings->desc_en}}</textarea>
-											</div>
-											<div class="form-group col-md-6 col-sm-6">
-												<label>سياسة الخصوصه عربي</label>
-												<textarea name="privacy_ar" id="ckeditor" cols="30" rows="15"  class="form-control ckeditor">{{$settings->privacy_ar}}</textarea>
-											</div>
-											<div class="form-group col-md-6 col-sm-6">
-												<label> سياسة الخصوصية انجليزي</label>
-												<textarea name="privacy_en" id="ckeditor" cols="30" rows="15"  class="form-control ckeditor">{{$settings->privacy_en}}</textarea>
-											</div>
-											<div class="form-group col-md-6 col-sm-6">
-												<label>سياسة الخصوصه عربي</label>
-												<textarea name="terms_ar" id="ckeditor" cols="30" rows="15"  class="form-control ckeditor">{{$settings->terms_ar}}</textarea>
-											</div>
-											<div class="form-group col-md-6 col-sm-6">
-												<label> سياسة الخصوصية انجليزي</label>
-												<textarea name="terms_en" id="ckeditor" cols="30" rows="15"  class="form-control ckeditor">{{$settings->terms_en}}</textarea>
-											</div>
-											<div class="form-group row">
-												<div class="col-md-2">
-													<img class="avatar-img" src="{{asset('img/settings/'.$settings->image) }}" alt="Speciality" width="120" height="100">
-												</div>
-												<div class="col-md-10">
-													<label>صورة التى سوف يتم عرضها في صفحة من نحن </label>
-													<input type="file" name="image" class="form-control">
-													<!-- <input type="hidden" name="url" value="{{$settings->image}}">	 -->
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col-md-2">
-													<img class="avatar-img" src="{{asset('img/settings/'.$settings->logo) }}" alt="Speciality" width="120" height="100">
-												</div>
-												<div class="col-md-10">
-													<label>الشعار</label>
-													<input type="file" name="logo" class="form-control">
-													<!-- <input type="hidden" name="url" value="{{$settings->logo}}">	 -->
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col-md-2">
-													<img class="avatar-img" src="{{asset('img/settings/'.$settings->favicon) }}" alt="Speciality" width="120" height="100">
-												</div>
-												<div class="col-md-10">
-													<label>Favicon</label>
-													<input type="file" name="favicon" class="form-control">
-													<!-- <input type="hidden" name="url2" value="{{$settings->favicon}}">	 -->
-												</div>
+	@if (count($errors) > 0)
+	<div class="alert alert-danger">
+		<button aria-label="Close" class="close" data-dismiss="alert" type="button">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<strong>خطا</strong>
+		<ul>
+			@foreach ($errors->all() as $error)
+			<li>{{ $error }}</li>
+			@endforeach
+		</ul>
+	</div>
+	@endif
+</div>
+<section id="keytable">
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
 
-											</div>
-										</div>
-											<button type="submit" class="btn btn-primary btn-block">حفظ التغيير </button>
-
-										</form>
+				<div class="card-content collapse show">
+					<div class="card-body card-dashboard">
+						<div class="card-body">
+							<form action="{{url('admin/settings/update')}}" method="POST" name="le_form"
+								enctype="multipart/form-data">
+								@csrf
+								<input type="hidden" name="id" value="{{Auth::user()->id}}">
+								<div class="row form-row">
+									<div class="form-group col-md-6 col-sm-6">
+										<label>العنوان العربي</label>
+										<input type="text" name="title_ar" class="form-control"
+											value="{{$settings->title_ar}}">
 									</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+									<div class="form-group col-md-6 col-sm-6">
+										<label>العنوان انجليزي</label>
+										<input type="text" name="title_en" class="form-control"
+											value="{{$settings->title_en}}">
+									</div>
+									<div class="form-group col-md-6 col-sm-6">
+										<label>رقم الهاتف</label>
+										<input type="text" name="phone" class="form-control"
+											value="{{$settings->phone}}">
+									</div>
+									<div class="form-group col-md-6 col-sm-6">
+										<label> email</label>
+										<input type="text" name="mail" class="form-control" value="{{$settings->mail}}">
+									</div>
+
+									<div class="form-group col-md-6 col-sm-6">
+										<label>الوصف </label>
+										<textarea name="desc_ar" id="ckeditor" cols="30" rows="15"
+											class="form-control ckeditor">{{$settings->desc_ar}}</textarea>
+									</div>
+									<div class="form-group col-md-6 col-sm-6">
+										<label>الوصف انجليزي</label>
+										<textarea name="desc_en" id="ckeditor" cols="30" rows="15"
+											class="form-control ckeditor">{{$settings->desc_en}}</textarea>
+									</div>
+									<div class="form-group col-md-6 col-sm-6">
+										<label>سياسة الخصوصه عربي</label>
+										<textarea name="policy_ar" id="ckeditor" cols="30" rows="15"
+											class="form-control ckeditor">{{$settings->policy_ar}}</textarea>
+									</div>
+									<div class="form-group col-md-6 col-sm-6">
+										<label> سياسة الخصوصية انجليزي</label>
+										<textarea name="policy_en" id="ckeditor" cols="30" rows="15"
+											class="form-control ckeditor">{{$settings->policy_en}}</textarea>
+									</div>
+									<!-- <div class="form-group col-md-6 col-sm-6">
+										<label>سياسة الخصوصه عربي</label>
+										<textarea name="terms_ar" id="ckeditor" cols="30" rows="15"
+											class="form-control ckeditor">{{$settings->terms_ar}}</textarea>
+									</div>
+									<div class="form-group col-md-6 col-sm-6">
+										<label> سياسة الخصوصية انجليزي</label>
+										<textarea name="terms_en" id="ckeditor" cols="30" rows="15"
+											class="form-control ckeditor">{{$settings->terms_en}}</textarea>
+									</div> -->
+									<div class="form-group row">
+										<div class="col-md-2">
+											<img class="avatar-img" src="{{asset('img/settings/'.$settings->image) }}"
+												alt="Speciality" width="120" height="100">
+										</div>
+										<div class="col-md-10">
+											<label>صورة التى سوف يتم عرضها في صفحة من نحن </label>
+											<input type="file" name="image" class="form-control">
+											<!-- <input type="hidden" name="url" value="{{$settings->image}}">	 -->
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-2">
+											<img class="avatar-img" src="{{asset('img/settings/'.$settings->logo) }}"
+												alt="Speciality" width="120" height="100">
+										</div>
+										<div class="col-md-10">
+											<label>الشعار</label>
+											<input type="file" name="logo" class="form-control">
+											<!-- <input type="hidden" name="url" value="{{$settings->logo}}">	 -->
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-2">
+											<img class="avatar-img" src="{{asset('img/settings/'.$settings->favicon) }}"
+												alt="Speciality" width="120" height="100">
+										</div>
+										<div class="col-md-10">
+											<label>Favicon</label>
+											<input type="file" name="favicon" class="form-control">
+											<!-- <input type="hidden" name="url2" value="{{$settings->favicon}}">	 -->
+										</div>
+
+									</div>
+								</div>
+								<button type="submit" class="btn btn-primary btn-block">حفظ التغيير </button>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
 
 @endsection

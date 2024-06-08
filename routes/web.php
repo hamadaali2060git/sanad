@@ -40,7 +40,7 @@ Auth::routes();
 
   Route::get('about', 'FrontController@about');
 
-  Route::get('policy', 'FrontController@policy');
+  Route::get('privacy-policy', 'FrontController@policy');
   Route::get('contact', 'FrontController@contact');
   Route::get('instructors', 'FrontController@instructors');
 

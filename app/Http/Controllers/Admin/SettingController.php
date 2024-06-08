@@ -114,10 +114,10 @@ class SettingController extends Controller
         $edit->desc_en  = $request->desc_en;
         $edit->mail  = $request->mail;
         $edit->phone  = $request->phone;
-        $edit->privacy_ar  = $request->privacy_ar;
-        $edit->privacy_en  = $request->privacy_en;
-        $edit->terms_ar  = $request->terms_ar;
-        $edit->terms_en  = $request->terms_en;
+        $edit->policy_ar  = $request->policy_ar;
+        $edit->policy_en  = $request->policy_en;
+        // $edit->terms_ar  = $request->terms_ar;
+        // $edit->terms_en  = $request->terms_en;
 
         $edit->save();
         return back()->with("success", 'تم التحديث ');
