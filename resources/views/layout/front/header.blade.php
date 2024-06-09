@@ -38,7 +38,7 @@ App::setLocale($langg);
                             @foreach ($allcategories as $_item)
                             <li class="dropdown simple-dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown"
-                                    href="{{url('category/'.$_item->slug)}}">
+                                    href="{{url('category/'.$_item->slug_en)}}">
                                     @if($langg=='ar')
                                     {{$_item->title_ar}}
                                     @else

@@ -72,7 +72,7 @@ class FrontController extends Controller
     public function coursesBycategory($slug)
     {
         $isLogedin = Auth::guard('instructors')->user();
-        $category = Category::where('slug',$slug)->first();
+        $category = Category::where('slug_en',$slug)->first();
         if($category){
         $courses=Course::where('status',1)->where('category_id',$category->id)->get();
         }else {
