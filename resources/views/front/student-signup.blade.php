@@ -78,6 +78,13 @@ App::setLocale($langg);
                         <i class="fa fa-phone icon"></i>
                         <input type="number" name="mobile" class="form-control" placeholder="{{__('front.Phone No')}}">
                     </div>
+                    <div class="form-group">
+
+                        <select class=" form-control" name="type">
+                            <option value="student">طالب</option>
+                            <option value="instructor">مدرب</option>
+                        </select>
+                    </div>
                     <!-- <div class="form-group mt-4 mb-4">
                             <div class="row">
 

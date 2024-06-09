@@ -204,8 +204,12 @@ App::setLocale($langg);
                 <div class="dropdown">
                     <button class="btn btn-transparent dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @if(Auth::guard('instructors')->user()->photo)
                         <img src="{{asset('img/profiles/students/'.Auth::guard('instructors')->user()->photo) }}"
                             alt="">
+                        @else
+                        <img src="{{asset('img/profiles/profile.png') }}" class="img-thumbnail profile-img-edit">
+                        @endif
                     </button>
                     <div class="dropdown-menu pb-0" aria-labelledby="dropdownMenuButton">
                         <!-- <div class="pl-3 pr-3 pt-2 pb-1">
@@ -235,7 +239,7 @@ App::setLocale($langg);
                             <a class="dropdown-item main-color font-weight-600 text-medium"
                                 href="{{ route('signoutinstructors') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Logout
+                                تسجيل الخروج
                             </a>
                             <form id="logout-form" action="{{ route('signoutinstructors') }}" method="POST"
                                 class="d-none">

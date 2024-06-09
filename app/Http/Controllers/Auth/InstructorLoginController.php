@@ -41,10 +41,10 @@ class InstructorLoginController extends Controller
         $credentials = $request -> only(['email','password']);
         $checkinstructor = Instructor::where("email" , $request->email)->first();
         if($checkinstructor){
-            if($checkinstructor->is_activated ==0)
-            {
-                return redirect('user-login')->with("errorss", 'الحساب غير مفعل');
-            }else{
+            // if($checkinstructor->is_activated ==0)
+            // {
+            //     return redirect('user-login')->with("errorss", 'الحساب غير مفعل');
+            // }else{
                 $good = Auth::guard('instructors') -> attempt($credentials);
                 if($good) {
                     if($checkinstructor->type='instructor'){
@@ -55,7 +55,7 @@ class InstructorLoginController extends Controller
                 }else{
                     return redirect('user-login')->with("errorss", 'بيانات الدخول غير صحيحةة');
                 }
-            }
+            // }
         }else{
             return redirect('user-login')->with("errorss", 'بيانات الدخول غير صحيحة');
         }
@@ -79,11 +79,9 @@ class InstructorLoginController extends Controller
     }
     public function registerNewUser(Request $request)
     {
-
         $user = Auth::guard('instructors')->user();
         if($user)
             return redirect('/');
-
         // if($request->type !="instructor"){
             $this->validate(request(),[
                     'first_name'    => 'required|min:3',
@@ -120,7 +118,7 @@ class InstructorLoginController extends Controller
             $add->email  = $request->email;
             $add->password  = bcrypt($request->password);
             $add->mobile  = $request->mobile;
-            $add->type  = 'student';
+            $add->type  = $request->type;
             $add->save();
             return redirect('user-login')->with("message", 'تم التسجيل بنجاح');
         }
