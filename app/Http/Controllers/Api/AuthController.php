@@ -85,7 +85,7 @@ class AuthController extends Controller
         }else{
             $token = Str::random(60);
             $add = Instructor::create([
-                'name' =>  $request->first_name .' '. $request->last_name;
+                'name' =>  $request->first_name .' '. $request->last_name,
                 'first_name'  => $request->first_name,
                 'last_name'  => $request->last_name,
                 'mobile'  => $request->mobile,
