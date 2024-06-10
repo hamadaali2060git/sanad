@@ -53,11 +53,13 @@ App::setLocale($langg);
                     </li>
 
                     <li class="d-lg-none d-md-block d-block">
-                        <a href="signup.html"> <i class="fas fa-user pr-1 pt-2"></i>{{__('front.SignUp')}} </a>
+                        <a href="{{url('student-signup')}}"> <i class="fas fa-user pr-1 pt-2"></i>{{__('front.SignUp')}}
+                        </a>
                     </li>
 
                     <li class="d-lg-none d-md-block d-block">
-                        <a href="login.html"> <i class="fas fa-sign-in-alt pr-1 pt-2"></i>{{__('front.Log In')}} </a>
+                        <a href="{{url('user-login')}}"> <i class="fas fa-sign-in-alt pr-1 pt-2"></i>{{__('front.Log
+                            In')}} </a>
                     </li>
 
                     <div class="header-search-div d-lg-none d-md-block d-block">
