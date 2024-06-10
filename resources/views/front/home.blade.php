@@ -65,14 +65,14 @@ App::setLocale($langg);
                     @if($langg=='ar')
                     <a href="{{url('course/'.$_item->slug_ar.'/'.$_item->id)}}">
                         @else
-                        <a href="{{url('course/'.$_item->slug_en.'/'.$_item->id)}}">
+                        <a href="{{url('course/'.$_item->slug_ar.'/'.$_item->id)}}">
                             @endif
                             <img src="{{asset('img/courses/'.$_item->image) }}" alt="">
                         </a>
                         @if($langg=='ar')
-                        <a href="{{url('course/'.$_item->slug_en.'/'.$_item->id)}}">
+                        <a href="{{url('course/'.$_item->slug_ar.'/'.$_item->id)}}">
                             @else
-                            <a href="{{url('course/'.$_item->slug_en.'/'.$_item->id)}}">
+                            <a href="{{url('course/'.$_item->slug_ar.'/'.$_item->id)}}">
                                 @endif
                                 <div class="bg-light">
                                     <p class="text-dark font-weight-bold mb-2">
