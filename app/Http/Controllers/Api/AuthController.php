@@ -94,13 +94,13 @@ class AuthController extends Controller
                 'type'=>'student'
             ]);
             $user = Instructor::selection()->where("id" , $add->id)->first();
-            $add_array = $add->toArray();
-            $add_array['link'] = Str::random(32);
-            DB::table('user_activations')->insert(['id_user'=>$add_array['id'],'token'=>$add_array['link']]);
-            Mail::send('emails.activation', $add_array, function($message) use ($add_array){
-                $message->to($add_array['email']);
-                $message->subject('Sanad - Activation code');
-            });
+            // $add_array = $add->toArray();
+            // $add_array['link'] = Str::random(32);
+            // DB::table('user_activations')->insert(['id_user'=>$add_array['id'],'token'=>$add_array['link']]);
+            // Mail::send('emails.activation', $add_array, function($message) use ($add_array){
+            //     $message->to($add_array['email']);
+            //     $message->subject('Sanad - Activation code');
+            // });
 
             return $this -> returnDataa('data',$user,__('front.email confirmation'));
             // return $this -> returnSuccessMessage('successfully registered');
