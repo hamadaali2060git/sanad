@@ -117,7 +117,7 @@ class HomeController extends Controller
             'data',$data,''
         );
     }
-
+   
     public function coursesUser(Request $request)
     {
         $userid = Auth::guard('instructors-api')->user();
@@ -224,5 +224,5 @@ class HomeController extends Controller
         $add-> save();
         return $this -> returnSuccessMessage('successfully sent');
     }
-
+    
 }

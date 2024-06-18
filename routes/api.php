@@ -32,7 +32,7 @@ Route::group(['middleware' => ['api','changeLanguage'], 'namespace' => 'Api'], f
     Route::get('allcourses-lives', 'AuthController@allcoursesLive');
     Route::post('change_password', 'AuthController@changePassword');
     Route::post('forgetpassword', 'AuthController@forgetPassword');
-
+    Route::post('remove-acount', 'AuthController@removeAcount');
 
     Route::get('categotries', 'HomeController@categotries');
     Route::get('courses', 'HomeController@courses');
@@ -56,5 +56,5 @@ Route::group(['middleware' => ['api','changeLanguage'], 'namespace' => 'Api'], f
     Route::post('add-product', 'HomeController@addProduct');
     Route::post('add-favorite', 'HomeController@addFavorite');
     Route::post('delete-favorite', 'HomeController@deleteFavorite');
-
+    
 });

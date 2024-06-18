@@ -297,6 +297,15 @@ class AuthController extends Controller
         $user->photo=$this->getFile('/img/profiles/students/',$user->photo,'/img/profiles/');
         return $this -> returnDataa('data',$user,__('front.updated successfully'));
     }
+    public function removeAcount(Request $request){
+        $user = Auth::guard('instructors-api')->user();
+        if(!$user)
+            return $this->returnError('يجب تسجيل الدخول أولا','','401');
+        $delete = Instructor::find($user->id);
+        $delete->delete();
+        return $this -> returnSuccessMessage('تم الحذف ');
+
+    }
     public function contactInfo()
     {
          $contactinfo = ContactInfo::first();
