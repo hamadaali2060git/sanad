@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Traits\GeneralTrait;
 use App\Traits\ImageUploadTrait;
-
 use DB;
 use Hash;
 use Mail;
