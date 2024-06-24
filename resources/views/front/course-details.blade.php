@@ -274,33 +274,34 @@
                         </li>
                     </ul>
                 </div>
-                <!-- <div class="col-12 mt-1">
-                        <h6> مقدم الدورة
+                <div class="col-12 mt-1">
+                    <h6> مقدم الدورة
 
-                        </h6>
+                    </h6>
 
-                        <div class="row">
-                            <div class="col-md-2 mb-4">
-                                <img src="img/instructor.jpg" class="rounded-circle instructor-img">
-                            </div>
-                            <div class="col-md-10">
-                                <h6 class="font-weight-normal mb-2"><a href="#" class="main-color">{{$course->course_instructor->name}}
-                                    </a></h6>
-                                <p class="font-weight-bold  text-dark mb-2">عن المدرب
-                                </p>
-                                <p>{{$course->course_instructor->detail}}
-                                </p>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-2 mb-4">
+                            <img src="img/instructor.jpg" class="rounded-circle instructor-img">
                         </div>
+                        <div class="col-md-10">
+                            <h6 class="font-weight-normal mb-2"><a href="#"
+                                    class="main-color">{{$course->course_instructor->name}}
+                                </a></h6>
+                            <p class="font-weight-bold  text-dark mb-2">عن المدرب
+                            </p>
+                            <p>{{$course->course_instructor->detail}}
+                                <!-- لوريم إيبسوم هو ببساطة نص وهمي من صناعة الطباعة والتنضيد. لقد كان لوريم إيبسوم هو النص الوهمي القياسي في هذه الصناعة منذ القرن السادس عشر، عندما أخذت طابعة غير معروفة لوح الكتابة وخلطته لصنع نموذج كتاب. لقد صمدت ليس فقط لخمسة قرون، بل قفزت أيضًا إلى التنضيد الإلكتروني، وبقيت دون تغيير بشكل أساسي -->
 
-                        <div class="row justify-content-center">
+
+                            </p>
                         </div>
+                    </div>
 
-                    </div> -->
+                    <div class="row justify-content-center">
+                        <!-- <a href="#"><i class="fas fa-flag"></i> Report</a> -->
+                    </div>
 
-
-
-
+                </div>
                 <!-- <div class="col-12 mt-5">
                         <h6>Recently Added Courses
 
