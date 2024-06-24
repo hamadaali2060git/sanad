@@ -24,8 +24,6 @@ Auth::routes();
 
 // Route::get('home', 'Admin/DashBoardController@index');
 
-
-
   Route::get('lang/{locale}', 'LocalizationController@index');
 
   Route::get('/', 'FrontController@index');
