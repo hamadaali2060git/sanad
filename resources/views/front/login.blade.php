@@ -54,7 +54,9 @@ App::setLocale($langg);
                         <strong>{{ $message }}</strong>
                         @enderror
                     </div>
-
+                    <div class="form-group ">
+                        <a href="{{url('forgot/password')}}" class=" ">نسيت كلمة المرور ؟</a>
+                    </div>
 
 
 

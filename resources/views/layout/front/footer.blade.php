@@ -39,9 +39,9 @@
 
                         <div class="col-6">
 
-                            <a href="{{url('instructors')}}" class="d-block mt-3">{{__('front.instructors')}}</a>
+                            <!-- <a href="{{url('instructors')}}" class="d-block mt-3">{{__('front.instructors')}}</a> -->
 
-                            <a href="{{url('policy')}}" class="d-block mt-3">{{__('front.privacy policy')}}</a>
+                            <a href="{{url('privacy-policy')}}" class="d-block mt-3">{{__('front.privacy policy')}}</a>
                         </div>
 
                     </div>

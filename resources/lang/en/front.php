@@ -62,4 +62,5 @@ return [
     'first Name'=>'first Name',
     'last Name'=>'last Name',
     'Search'=>'Search',
+    'send'=>'send',
 ];

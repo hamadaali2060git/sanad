@@ -64,6 +64,6 @@ return [
     'You dont have an account'=>' ليس لديك حساب؟',
     
     'Search'=>'بحث',
-    ''=>'',
+    'send'=>'ارسال',
     
 ];

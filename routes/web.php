@@ -76,7 +76,7 @@ Auth::routes();
   Route::post('forgot/password', 'Auth\InstructorLoginController@submitForgot')->name('forgot.password.post');
   ## end
 
-  ## start reset password student , instructor
+  ## start reset password student , instructor 
   Route::get('reset-user-password/{token}', 'Auth\InstructorLoginController@resetUserPasswordGet')->name('reset-user-password');
   Route::post('reset-user-password', 'Auth\InstructorLoginController@resetUserPasswordPost')->name('reset-user-password.post');
   ## end

@@ -1,13 +1,13 @@
 @extends('layout.front.main')
-@section('content')	
-        <!-- start banner  -->
-        <section class="parallax course-details">
-        <div class="container">
-            <div class="row">
+@section('content')
+<!-- start banner  -->
+<section class="parallax course-details">
+    <div class="container">
+        <div class="row">
 
-                <div class="col-md-9">
+            <div class="col-md-9">
 
-                    <!-- <div class="breadcrumb mt-4 pt-1">
+                <!-- <div class="breadcrumb mt-4 pt-1">
                         <ul>
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Courses</a></li>
@@ -15,7 +15,7 @@
                             <li><a href="#" class="main-color">Python</a></li>
                         </ul>
                     </div> -->
-                    <div style="    height: 670px;
+                <div style="    height: 670px;
                     position: absolute;
                     width: 100%;
                     left: 5%;
@@ -23,19 +23,19 @@
                     margin-top: 25px;
                     color: #232323;">
 
-                        <div class="image-container2 popup-gallery">
-                            <a class="video" href="{{asset('img/courses/video/'.$course->video) }}">
-    
-                                <div class="image-overlay">
-                                    <h6><i class="fas fa-play-circle"></i></h6>
-                                    <p>Preview this course</p>
-                                </div>
-                                <img src="{{asset('img/courses/'.$course->image) }}">
-                            </a>
-                        </div>
-                        
+                    <div class="image-container2 popup-gallery">
+                        <a class="video" href="{{asset('img/courses/video/'.$course->video) }}">
+
+                            <div class="image-overlay">
+                                <h6><i class="fas fa-play-circle"></i></h6>
+                                <p>Preview this course</p>
+                            </div>
+                            <img src="{{asset('img/courses/'.$course->image) }}">
+                        </a>
                     </div>
-                    <!-- <h2>
+
+                </div>
+                <!-- <h2>
                         2021 Complete Python Bootcamp From Zero to Hero in Python
                     </h2>
 
@@ -70,14 +70,14 @@
 
                     </p> -->
 
-                    
 
 
-                </div>
 
-                <div class="col-md-3 course-details-white">
+            </div>
 
-                    <!-- <div class="image-container2 popup-gallery">
+            <div class="col-md-3 course-details-white">
+
+                <!-- <div class="image-container2 popup-gallery">
                         <a class="video" href="https://www.youtube.com/watch?v=WvhQhj4n6b8">
 
                             <div class="image-overlay">
@@ -89,48 +89,48 @@
                             <img src="img/categories/design.jpg">
                         </a>
                     </div> -->
-                    <div class="course-desc" id="course-desc">
-                        <h5>{{$course->title}}</h5>
-                        <!-- <h5>1000 L.E </h5>  -->
-                        <!-- <del>1500 L.E</del> -->
-                        <!-- <p class="text-danger"><i class="fas fa-stopwatch"></i> 2 days left at this price!
+                <div class="course-desc" id="course-desc">
+                    <h5>{{$course->title}}</h5>
+                    <!-- <h5>1000 L.E </h5>  -->
+                    <!-- <del>1500 L.E</del> -->
+                    <!-- <p class="text-danger"><i class="fas fa-stopwatch"></i> 2 days left at this price!
                         </p> -->
 
-                        
 
-                        <ul class="p-0 pt-4">
-                            <h6>تتضمن هذه الدورة:</h6>
-                            <li class="row">
-                                <div class="col-1"><i class="fab fa-youtube"></i></div>
-                                <div class="col-10">
-                                    <p> سعر الدورة :  {{$course->price}} ر.ق</p>
-                                </div>
-                            </li>
-                            <li class="row">
-                                <div class="col-1"><i class="far fa-file"></i></div>
-                                <div class="col-10">
-                                    <p>لغة الدورة التدريبية: {{$course->language}}</p>
-                                </div>
-                            </li>
-                            <li class="row">
-                                <div class="col-1"><i class="fas fa-calendar-alt"></i></div>
-                                <div class="col-10">
-                                    <p>تاريخ بداية الدورة : {{$course->date}}</p>
-                                </div>
-                            </li>
-                            <li class="row">
-                                <div class="col-1"><i class="fas fa-infinity"></i></div>
-                                <div class="col-10">
-                                    <p>  وقت الدورة :{{$course->time}}</p>
-                                </div>
-                            </li>
-                            <li class="row">
-                                <div class="col-1"><i class="fas fa-code"></i></div>
-                                <div class="col-10">
-                                    <p>   عدد أيام الدورة : {{$course->duration}}</p>
-                                </div>
-                            </li>
-                            <!-- <li class="row">
+
+                    <ul class="p-0 pt-4">
+                        <h6>تتضمن هذه الدورة:</h6>
+                        <li class="row">
+                            <div class="col-1"><i class="fab fa-youtube"></i></div>
+                            <div class="col-10">
+                                <p> سعر الدورة : {{$course->price}} ر.ق</p>
+                            </div>
+                        </li>
+                        <li class="row">
+                            <div class="col-1"><i class="far fa-file"></i></div>
+                            <div class="col-10">
+                                <p>لغة الدورة التدريبية: {{$course->language}}</p>
+                            </div>
+                        </li>
+                        <li class="row">
+                            <div class="col-1"><i class="fas fa-calendar-alt"></i></div>
+                            <div class="col-10">
+                                <p>تاريخ بداية الدورة : {{$course->date}}</p>
+                            </div>
+                        </li>
+                        <li class="row">
+                            <div class="col-1"><i class="fas fa-infinity"></i></div>
+                            <div class="col-10">
+                                <p> وقت الدورة :{{$course->time}}</p>
+                            </div>
+                        </li>
+                        <li class="row">
+                            <div class="col-1"><i class="fas fa-code"></i></div>
+                            <div class="col-10">
+                                <p> عدد أيام الدورة : {{$course->duration}}</p>
+                            </div>
+                        </li>
+                        <!-- <li class="row">
                                 <div class="col-1"><i class="fas fa-infinity"></i></div>
                                 <div class="col-10">
                                     <p>lifetime access</p>
@@ -148,33 +148,33 @@
                                     <p> Certificate of completion</p>
                                 </div>
                             </li> -->
-                        </ul>
-                        <a href="#" class="btn header-btn w-100"> أشترك الان - {{$course->price}} ر.ق </a>
-                    </div>
+                    </ul>
+                    <a href="#" class="btn header-btn w-100"> أشترك الان - {{$course->price}} ر.ق </a>
                 </div>
-
             </div>
+
         </div>
-    </section>
-    <!-- end banner -->
+    </div>
+</section>
+<!-- end banner -->
 
 
-    <!-- start course details -->
-    <section class="overview-section">
-        <div class="container">
-            <div class="row">
+<!-- start course details -->
+<section class="overview-section">
+    <div class="container">
+        <div class="row">
 
-                <main class="col-12 col-lg-9 left-sidebar md-margin-60px-bottom  ">
-                    <div class="col-12  p-2">
-                        <h6>محاور الدورة</h6>
-                        <ul class="list-unstyled">
-                            <div class="row">
+            <main class="col-12 col-lg-9 left-sidebar md-margin-60px-bottom  ">
+                <div class="col-12  p-2">
+                    <h6>محاور الدورة</h6>
+                    <ul class="list-unstyled">
+                        <div class="row">
                             @foreach ($course->course_subtitle as $subtitle)
-                                <li class=" pb-2">
-                                    <a href="signup.html" class="btn mahawir-btn2 mr-2 mr-2">{{$subtitle->name}}</a>
-                                </li>
+                            <li class=" pb-2">
+                                <a href="signup.html" class="btn mahawir-btn2 mr-2 mr-2">{{$subtitle->name}}</a>
+                            </li>
                             @endforeach
-                                <!-- <li class=" pb-2">
+                            <!-- <li class=" pb-2">
                                     <a href="signup.html" class="btn mahawir-btn2 mr-2 mr-2"> الوعي الذاتي</a>
                                 </li>
                                 <li class=" pb-2">
@@ -186,10 +186,10 @@
                                 <li class=" pb-2">
                                     <a href="signup.html" class="btn mahawir-btn2 mr-2 mr-2">التدرب</a>
                                 </li> -->
-                            </div>
-                        </ul>
-                    </div>
-                    <!-- <div class="col-12 bg-light p-4">
+                        </div>
+                    </ul>
+                </div>
+                <!-- <div class="col-12 bg-light p-4">
                         <h6>محاور الدورة</h6>
                         <ul class="list-unstyled">
                             <div class="row">
@@ -214,67 +214,67 @@
                         </ul>
                     </div> -->
 
-                    <div class="mt-2 col-12 bg-light p-4">
-                        <h6>شرح توضيحي عن الدورة
-                        </h6>
+                <div class="mt-2 col-12 bg-light p-4">
+                    <h6>شرح توضيحي عن الدورة
+                    </h6>
 
-                        <p>{{$course->description}}
-                            <!-- لوريم إيبسوم هو ببساطة نص وهمي من صناعة الطباعة والتنضيد. لقد كان لوريم إيبسوم هو النص الوهمي القياسي في هذه الصناعة منذ القرن السادس عشر، عندما أخذت طابعة غير معروفة لوح الكتابة وخلطته لصنع نموذج كتاب. لقد صمدت ليس فقط لخمسة قرون، بل قفزت أيضًا إلى التنضيد الإلكتروني، وبقيت دون تغيير بشكل أساسي -->
-                        </p>
-                    </div>
+                    <p>{{$course->description}}
+                        <!-- لوريم إيبسوم هو ببساطة نص وهمي من صناعة الطباعة والتنضيد. لقد كان لوريم إيبسوم هو النص الوهمي القياسي في هذه الصناعة منذ القرن السادس عشر، عندما أخذت طابعة غير معروفة لوح الكتابة وخلطته لصنع نموذج كتاب. لقد صمدت ليس فقط لخمسة قرون، بل قفزت أيضًا إلى التنضيد الإلكتروني، وبقيت دون تغيير بشكل أساسي -->
+                    </p>
+                </div>
 
-                    <div class="mt-2 col-12 bg-light p-4">
-                        <h6>متطلبات الدورة
-                        </h6>
+                <div class="mt-2 col-12 bg-light p-4">
+                    <h6>متطلبات الدورة
+                    </h6>
 
-                        <ul class="pl-4">
-                            @foreach ($course->course_requirements as $requirements)
-                                <li class=" pb-2">
-                                   {{$requirements->name}}
-                                </li>
-                            @endforeach
-                            <!-- <li>
+                    <ul class="pl-4">
+                        @foreach ($course->course_requirements as $requirements)
+                        <li class=" pb-2">
+                            {{$requirements->name}}
+                        </li>
+                        @endforeach
+                        <!-- <li>
                                 لوريم إيبسوم هو ببساطة نص وهمي من صناعة الطباعة والتنضيد. 
                             </li>
                             <li>
                                 لقد كان لوريم إيبسوم هو النص الوهمي القياسي في هذه الصناعة منذ القرن السادس عشر.
                             </li> -->
-                        </ul>
-                    </div>
+                    </ul>
+                </div>
 
-                    
-                    <div class="mt-2 col-12  p-1">
-                        <h6> مميزات الدورة الاونلاين
-                        </h6>
 
-                        <ul class="pl-4">
-                            <li class="row">
-                                <div class="col-1">
-                                    <i class="fas fa-code"></i>
-                                </div>
-                                <div class="col-10">
-                                    <p> الوصول لمحتوى الدورة من أي مكان، وفي أي وقت.</p>
-                                </div>
-                            </li>
-                            <li class="row">
-                                <div class="col-1">
-                                    <i class="far fa-file"></i>
-                                </div>
-                                <div class="col-10">
-                                    <p>تعلم على وتيرتك الخاصة</p>
-                                </div>
-                            </li>
-                            <li class="row">
-                                <div class="col-1">
-                                    <i class="fas fa-code"></i>
-                                </div>
-                                <div class="col-10">
-                                    <p>شهادة إتمام الدورة.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-12 mt-1">
+                <div class="mt-2 col-12  p-1">
+                    <h6> مميزات الدورة الاونلاين
+                    </h6>
+
+                    <ul class="pl-4">
+                        <li class="row">
+                            <div class="col-1">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="col-10">
+                                <p> الوصول لمحتوى الدورة من أي مكان، وفي أي وقت.</p>
+                            </div>
+                        </li>
+                        <li class="row">
+                            <div class="col-1">
+                                <i class="far fa-file"></i>
+                            </div>
+                            <div class="col-10">
+                                <p>تعلم على وتيرتك الخاصة</p>
+                            </div>
+                        </li>
+                        <li class="row">
+                            <div class="col-1">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="col-10">
+                                <p>شهادة إتمام الدورة.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <div class="col-12 mt-1">
                         <h6> مقدم الدورة
 
                         </h6>
@@ -289,19 +289,22 @@
                                 <p class="font-weight-bold  text-dark mb-2">عن المدرب
                                 </p>
                                 <p>{{$course->course_instructor->detail}}
-                                    <!-- لوريم إيبسوم هو ببساطة نص وهمي من صناعة الطباعة والتنضيد. لقد كان لوريم إيبسوم هو النص الوهمي القياسي في هذه الصناعة منذ القرن السادس عشر، عندما أخذت طابعة غير معروفة لوح الكتابة وخلطته لصنع نموذج كتاب. لقد صمدت ليس فقط لخمسة قرون، بل قفزت أيضًا إلى التنضيد الإلكتروني، وبقيت دون تغيير بشكل أساسي -->
-
-
                                 </p>
                             </div>
                         </div>
 
                         <div class="row justify-content-center">
-                            <!-- <a href="#"><i class="fas fa-flag"></i> Report</a> -->
                         </div>
 
-                    </div>
-                    <!-- <div class="col-12 mt-5">
+                    </div> -->
+
+
+
+
+
+
+
+                <!-- <div class="col-12 mt-5">
                         <h6>Recently Added Courses
 
                         </h6>
@@ -540,12 +543,12 @@
 
 
                     </div> -->
-                </main> 
-                
+            </main>
 
-            </div>
+
         </div>
-    </section>
-    <!-- end course details -->
+    </div>
+</section>
+<!-- end course details -->
 
 @endsection

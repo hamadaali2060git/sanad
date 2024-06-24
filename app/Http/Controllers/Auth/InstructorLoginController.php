@@ -139,7 +139,41 @@ class InstructorLoginController extends Controller
         return redirect()->to('user-login')->with('errorss',"رمز التفعيل غير صالح");
     }
 
+    public function forgotPassword()
+    {   
+        return view('front.forget-password');
+    }
+
+    public function submitForgot(Request $request)
+    {
+      // dd('iughiu');
+          $request->validate([
+              'email' => 'required|email|exists:instructors',
+          ]);
+  
+
+        $token = Str::random(64);
+        DB::table('password_resets')->insert([
+                'email' => $request->email,
+                'token' => $token,
+                'created_at' => Carbon::now()
+        ]);
+        // dd($token);
+        Mail::send('emails.forgetpassword', ['token' => $token], function($message) use($request){
+                $message->to($request->email);
+                $message->subject('Reset Password');
+        });
+        // $details = [
+        //     'title' => 'Mail from hamada ali',
+        //     'body' => 'This is for testing email using smtp',
+        //     'token' => $token,
+        // ];
+        return back()->with('message', 'لقد أرسلنا عبر البريد الإلكتروني رابط إعادة تعيين كلمة المرور الخاصة بك! ');
+        
+    }
+
     public function resetUserPasswordGet($token) {
+        // dd($token);
          return view('auth.forgetpasswordlink', ['token' => $token]);
     }
     public function resetUserPasswordPost(Request $request)
@@ -166,9 +200,9 @@ class InstructorLoginController extends Controller
                               ])->first();
 
           if(!$updatePassword){
-              return back()->withInput()->with('error', 'Invalid token!');
+              return back()->withInput()->with('error', 'غير صالح');
           }
-          $user = User::where('email', $updatePassword->email)->first();
+          $user = Instructor::where('email', $updatePassword->email)->first();
           // $user->email  = $request->email;
           $user->password  = bcrypt($request->password);
           $user-> save();
@@ -180,7 +214,7 @@ class InstructorLoginController extends Controller
               $langg=app()->getLocale();
           }
 
-            return redirect('/')->with('message', 'Ihr Passwort wurde geändert! ');
+        return redirect('user-login')->with('message', 'تم تغيير كلمة السر الخاصة بك! ');
 
     }
 
