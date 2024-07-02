@@ -43,27 +43,7 @@ class LiveCourseController extends Controller
 
             $files->move($destinationPath, $profileImage);
             
-            return Response()->json($profileImage);
-            $videos_sessions = session()->get('videos_sessions');
-            if(!$videos_sessions) {
-                $videos_sessions = [
-                    $request->id => [
-                        "name" => $profileImage,
-                    ]
-                ];
-                session()->put('videos_sessions', $videos_sessions);
-            }
-            //if videos_sessions not empty then check if this product exist then increment quantity
-            if(isset($videos_sessions[$request->id])) {
-                $videos_sessions[$request->id]['name']=$profileImage;
-                session()->put('videos_sessions', $videos_sessions);
-            }
-
-            // if item not exist in videos_sessions then add to videos_sessions with quantity = 1
-            $videos_sessions[$request->id] = [
-                "name" => $profileImage,
-            ];
-            session()->put('videos_sessions', $videos_sessions);
+            
             return Response()->json($profileImage);
         }
         
