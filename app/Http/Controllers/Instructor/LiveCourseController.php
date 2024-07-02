@@ -17,7 +17,7 @@ use App\CourseRequirement;
 use App\Instructor;
 use App\Country;
 use App\Traits\ImageUploadTrait;
-
+use Session;
 class LiveCourseController extends Controller
 {
     use ImageUploadTrait;
@@ -29,6 +29,46 @@ class LiveCourseController extends Controller
         // $this->middleware('permission:اضافة صلاحية', ['only' => ['create','store']]);
         // $this->middleware('permission:تعديل صلاحية', ['only' => ['edit','update']]);
         // $this->middleware('permission:حذف صلاحية', ['only' => ['destroy']]);
+    }
+    public function addvideostore(Request $request)
+    {
+        
+        
+        if ($files = $request->file('file')) {
+            
+            $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            // $destinationPath = public_path('assets_admin/img/courses/videos');
+            $destinationPath = 'img/courses/video';
+            // dd($destinationPath);
+
+            $files->move($destinationPath, $profileImage);
+            
+            return Response()->json($profileImage);
+            $videos_sessions = session()->get('videos_sessions');
+            if(!$videos_sessions) {
+                $videos_sessions = [
+                    $request->id => [
+                        "name" => $profileImage,
+                    ]
+                ];
+                session()->put('videos_sessions', $videos_sessions);
+            }
+            //if videos_sessions not empty then check if this product exist then increment quantity
+            if(isset($videos_sessions[$request->id])) {
+                $videos_sessions[$request->id]['name']=$profileImage;
+                session()->put('videos_sessions', $videos_sessions);
+            }
+
+            // if item not exist in videos_sessions then add to videos_sessions with quantity = 1
+            $videos_sessions[$request->id] = [
+                "name" => $profileImage,
+            ];
+            session()->put('videos_sessions', $videos_sessions);
+            return Response()->json($profileImage);
+        }
+        
+
+        
     }
 
     public function index()
@@ -76,7 +116,7 @@ class LiveCourseController extends Controller
         //     ]
         // );
         $file_name = $this->upload($request, 'image', 'img/courses');
-        $video_name = $this->upload($request, 'video', 'img/courses/video');
+        // $video_name = $this->upload($request, 'video', 'img/courses/video');
         
         $userid = Auth::guard('instructors')->user();
         // $file_extension = $request -> file('image') -> getClientOriginalExtension();
@@ -111,7 +151,7 @@ class LiveCourseController extends Controller
             $add->price    = $request->price;
         }
         $add->image    = $file_name;
-        $add->video    = $video_name;
+        $add->video    = $request->video;
         $add->save();
 
 

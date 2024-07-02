@@ -32,7 +32,7 @@ use Carbon\Carbon;
         ###################### admin-profile ##############################
        
 
-Route::post('savevideo', 'Instructor\CourseController@addvideostore')->name('savevideo');
+Route::post('savevideo', 'Instructor\LiveCourseController@addvideostore')->name('savevideo');
 Route::get('removeVideoSessionItem/{id}', 'Instructor\CourseController@removeVideoSessionItem');
 
 
