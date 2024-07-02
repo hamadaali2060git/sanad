@@ -383,7 +383,7 @@
           //  var div = document.getElementById(hiddenclassss);
           // div.classList.remove(hiddenclassss);
           $('.' + hiddenclassss).show();
-          $('#' + videopath).attr('src', "http://127.0.0.1:8000/img/courses/video/" + data);
+          $('#' + videopath).attr('src', "https://sanad-qatar.qa/img/courses/video/" + data);
           document.getElementById(videovalue).value = data;
           document.getElementById(video).value = 'video.png';
           // $('#'+videovalue).append('eeeeeee');
