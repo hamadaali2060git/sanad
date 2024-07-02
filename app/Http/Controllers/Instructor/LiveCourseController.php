@@ -36,15 +36,12 @@ class LiveCourseController extends Controller
         
         if ($files = $request->file('file')) {
             
-            $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-            // $destinationPath = public_path('assets_admin/img/courses/videos');
-            $destinationPath = 'img/courses/video';
-            // dd($destinationPath);
-
-            $files->move($destinationPath, $profileImage);
+            // $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            // $destinationPath = 'img/courses/video';
+            // $files->move($destinationPath, $profileImage);
+            $video_name = $this->upload($request, 'file', 'img/courses/video');
             
-            
-            return Response()->json($profileImage);
+            return Response()->json($video_name);
         }
         
 
