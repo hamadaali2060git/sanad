@@ -33,6 +33,7 @@ use Carbon\Carbon;
        
 
 Route::post('savevideo', 'Instructor\LiveCourseController@addvideostore')->name('savevideo');
+
 Route::get('removeVideoSessionItem/{id}', 'Instructor\CourseController@removeVideoSessionItem');
 
 

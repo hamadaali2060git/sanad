@@ -1,14 +1,14 @@
 @php
-  if(session()->get('locale')){
-    $langg=session()->get('locale');
-    App::setLocale($langg);
-  }else{
-    $langg=app()->getLocale();
-    App::setLocale($langg);
-  }
+if(session()->get('locale')){
+$langg=session()->get('locale');
+App::setLocale($langg);
+}else{
+$langg=app()->getLocale();
+App::setLocale($langg);
+}
 @endphp
 <!-- title -->
-<title>Online Courses</title>
+<title>Sanad Qatar</title>
 
 <!-- meta tags -->
 <meta charset="utf-8">
@@ -35,9 +35,9 @@
 
 <!-- style -->
 @if($langg=='ar')
-  <link rel="stylesheet" href="{{asset('front/css/style_rtl.css')}}" />
+<link rel="stylesheet" href="{{asset('front/css/style_rtl.css')}}" />
 @else
-  <link rel="stylesheet" href="{{asset('front/css/style.css')}}" />
+<link rel="stylesheet" href="{{asset('front/css/style.css')}}" />
 @endif
 
 
@@ -47,6 +47,6 @@
 
 
 
- <!-- Data table -->
- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
+<!-- Data table -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">

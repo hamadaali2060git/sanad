@@ -14,6 +14,16 @@ class VideoController extends Controller
     {
         $this->middleware('auth');
     }
+    public function addvideostore(Request $request)
+    {
+        if ($files = $request->file('file')) {
+            // $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            // $destinationPath = 'img/courses/video';
+            // $files->move($destinationPath, $profileImage);
+            $video_name = $this->upload($request, 'file', 'img/videos');
+            return Response()->json($video_name);
+        }  
+    }
     public function index()
     {
         $videos=Video::all();
@@ -30,6 +40,7 @@ class VideoController extends Controller
         $file_video = $this->upload($request, 'video', 'img/videos');
         $file_image = $this->upload($request, 'image', 'img/videos/image');
         $add = new Video;
+        // $add->video    = $file_video;
         $add->video    = $file_video;
         $add->image    = $file_image;
         $add->title_ar   = $request->title_ar;
@@ -142,7 +153,6 @@ class VideoController extends Controller
         else{
             $delete->delete();
         }
-        dd('ddd');
         $delete->delete();
         return redirect()->back()->with("message",'تم الحذف بنجاح');
         // return response()->json(['success'=>'Slider deleted successfully!']);

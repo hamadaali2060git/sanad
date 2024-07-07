@@ -5,7 +5,11 @@ use Illuminate\Support\Facades\Route;
 ####  admin #######################
 // Auth::routes();
  Route::get('admin-login', 'Auth\LoginController@LoginAdmin')->name('admin-login');
+
+Route::post('save-admin-video', 'Admin\VideoController@addvideostore')->name('save-admin-video');
+
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'], function () {
+
 
    Route::resource('dashboard','DashBoardController');
    Route::resource('categories','CategoryController');
