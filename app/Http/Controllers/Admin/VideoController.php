@@ -124,11 +124,17 @@ class VideoController extends Controller
     //         return redirect()->route('sliders.index')->with("message",'تم الحذف بنجاح');
     // }  
     
+    
     public function destroy(Request $request)
     {
-        $delete             = Slider::findOrFail($request->id);
-        $image_path         = base_path("assets_admin/img/sliders/") .$delete->image;
+        $delete             = Video::findOrFail($request->id);
+        $file_video         = base_path("img/videos/") .$delete->video;
+        $image_path         = base_path("img/videos/image/") .$delete->image;
         
+        if(File::exists($file_video)) {
+            // unlink($image_path);
+            File::delete($file_video);
+        }
         if(File::exists($image_path)) {
             // unlink($image_path);
             File::delete($image_path);
@@ -136,9 +142,9 @@ class VideoController extends Controller
         else{
             $delete->delete();
         }
-        
+        dd('ddd');
         $delete->delete();
-        return redirect()->route('sliders.index')->with("message",'تم الحذف بنجاح');
+        return redirect()->back()->with("message",'تم الحذف بنجاح');
         // return response()->json(['success'=>'Slider deleted successfully!']);
     }
 }
