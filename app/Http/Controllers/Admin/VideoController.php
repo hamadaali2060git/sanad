@@ -40,8 +40,8 @@ class VideoController extends Controller
         $file_video = $this->upload($request, 'video', 'img/videos');
         $file_image = $this->upload($request, 'image', 'img/videos/image');
         $add = new Video;
-        // $add->video    = $file_video;
-        $add->video    = $file_video;
+        
+        $add->video    = $request->video;
         $add->image    = $file_image;
         $add->title_ar   = $request->title_ar;
         $add->title_en    = $request->title_en;
