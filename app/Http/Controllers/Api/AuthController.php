@@ -144,7 +144,7 @@ class AuthController extends Controller
         //        return $this->returnError($validator->errors()->first());
         $checkemail = Instructor::where("email" , $request->email)->first();
         if (!$checkemail) {
-            return $this -> returnError('001',__('front.email invalid'));
+            return $this -> returnError('البريد الالكتروني غير صالح');
         } else {
             try {
                 $token = Str::random(64);
