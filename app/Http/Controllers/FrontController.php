@@ -148,7 +148,8 @@ class FrontController extends Controller
     }
     public function policy()
     {
-        return view('front.policy');
+        return view('front.policy-ar');
+        // return view('front.privacy');
     }
     public function contact()
     {
