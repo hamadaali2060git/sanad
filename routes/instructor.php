@@ -91,8 +91,8 @@ Route::group(['middleware' => 'checkInstructor','namespace' => 'Instructor','pre
     Route::get('profile', 'InstructorController@index');
     Route::get('terms', 'InstructorController@termsConditions')->name('terms'); 
     Route::get('instructor-video', 'InstructorController@instructorVideo');	
-
-
+    Route::post('profile/update','InstructorController@updateProfile');
+    Route::post('changepassword', 'InstructorController@studentChangePassword')->name('instructor.changepassword');
 
     Route::get('report/sales','ReportController@sales');
     Route::get('report/transfers','ReportController@transfers');
@@ -108,7 +108,7 @@ Route::group(['middleware' => 'checkInstructor','namespace' => 'Instructor','pre
     Route::post('bankdetails','ProfileController@updateBankDetails')->name('bankdetails');
    	Route::get('getcity/{id}', 'ProfileController@getCity');
 
-    Route::post('profile/update','ProfileController@updateProfile');
+    
     Route::post('profile/update/documents','ProfileController@updateDocuments');
 
     Route::post('profile/update/certificates','ProfileController@updateCertificates');
@@ -116,7 +116,6 @@ Route::group(['middleware' => 'checkInstructor','namespace' => 'Instructor','pre
     Route::post('profile/update/cv','ProfileController@updateCv');
 
     
-    Route::post('user/changepassword', 'ProfileController@changePassword')->name('user.changepassword');
     
 	Route::get('agreements', 'ProfileController@agreements')->name('agreements');	
           	

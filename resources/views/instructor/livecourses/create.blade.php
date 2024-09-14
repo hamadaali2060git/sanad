@@ -301,8 +301,7 @@
               </div>
               <!--<div class="col-md-12"><hr/></div>-->
 
-              <div class="col-md-12" style="color: #FF4961; padding-right: 23px;padding-left: 23px" id="upload-error">
-              </div>
+              <div class="col-md-12" style="color: #FF4961; padding-right: 23px;padding-left: 23px" id="upload-error"> </div>
               <br>
 
               <div class="col-12 col-md-12">
@@ -339,7 +338,6 @@
 
 <script>
   $('.loader-container').hide();
-  let videoid = 1;
   $('.hidden1').hide();
 
 
@@ -382,10 +380,12 @@
           console.log(data + '>>>>>>>>>>>>>>>>>>>>><<<<' + hiddenclassss);
           //  var div = document.getElementById(hiddenclassss);
           // div.classList.remove(hiddenclassss);
-          $('.' + hiddenclassss).show();
-          $('#' + videopath).attr('src', "https://sanad-qatar.qa/img/courses/video/" + data);
-          document.getElementById(videovalue).value = data;
-          document.getElementById(video).value = 'video.png';
+          if(data){
+            $('.' + hiddenclassss).show();
+            $('#' + videopath).attr('src', "http://127.0.0.1:8000/img/courses/video/" + data);
+            document.getElementById(videovalue).value = data;
+            // document.getElementById(video).value = 'video.png';
+          }
           // $('#'+videovalue).append('eeeeeee');
         }
       })

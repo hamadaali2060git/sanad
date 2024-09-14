@@ -93,8 +93,8 @@ function separateString() {
                       
                       </select>
                     </div> -->
-                      <div class="row form-row">
-                      <div class="form-group col-md-6 col-sm-12">
+                        <div class="row form-row">
+                          <div class="form-group col-md-6 col-sm-12">
                             <label>عنوان الدورة عربي</label>
                             <input type="text" name="title_ar" class="form-control" value="{{$course->title_ar}}" id="titleid">
                             @error('title_ar')
@@ -128,9 +128,6 @@ function separateString() {
                             @enderror
                             <span id="languageError" style="color: red;"></span>
                           </div>
-                          
-                          
-                          
                           <div class="form-group col-md-4 col-sm-6">
                             <label>تاريخ بداية الدورة  </label>
                               <input type="date" name="date" class="form-control"  value="{{$course->date}}" id="dateid">
@@ -140,44 +137,42 @@ function separateString() {
                               <span id="dateError" style="color: red;"></span>
                           </div>
                           <div class="form-group col-md-4 col-sm-6">                                   
-                                <label> وقت الدورة (توقيت الاردن) </label>
-                                <select name="time" class="form-control formselect" id="timeid" >
-                                    <!-- <option  value=""  selected>اختار</option>   -->
-                                    <option value="6.30 - 8.00" {{ $course->time == "6.30 - 8.00" ? "selected" : "" }}>
-                                    06.30 مساء - 08.00 مساء
-                                    </option>
-                                    <option value="8.00 - 9.30" {{ $course->time == "8.00 - 9.30" ? "selected" : "" }}>
-                                    08.00 مساء 09.30 مساء 
-                                    </option>  
-                                    <option value="9.30 - 11:00" {{ $course->time == "9.30 - 11:00" ? "selected" : "" }}>
-                                     09.30 مساء 11.00 مساء 
-                                    </option> 
-                                     
-                                </select>
-                                <span id="timeError" style="color: red;"></span>
+                            <label> وقت الدورة (توقيت الاردن) </label>
+                            <select name="time" class="form-control formselect" id="timeid" >
+                                <!-- <option  value=""  selected>اختار</option>   -->
+                                <option value="6.30 - 8.00" {{ $course->time == "6.30 - 8.00" ? "selected" : "" }}>
+                                06.30 مساء - 08.00 مساء
+                                </option>
+                                <option value="8.00 - 9.30" {{ $course->time == "8.00 - 9.30" ? "selected" : "" }}>
+                                08.00 مساء 09.30 مساء 
+                                </option>  
+                                <option value="9.30 - 11:00" {{ $course->time == "9.30 - 11:00" ? "selected" : "" }}>
+                                  09.30 مساء 11.00 مساء 
+                                </option> 
+                            </select>
+                            <span id="timeError" style="color: red;"></span>
                           </div>
                           <div class="form-group col-md-4 col-sm-6">                                   
-                                <label>حدد مدة الدورة بالايام</label>
-                                <select name="duration" class="form-control formselect" id="durationid">
-                                    <!-- <option  value=""  selected>اختار</option>   -->
-                                    <option value="3" {{ $course->duration == "3" ? "selected" : "" }}>
-                                        3 أيام
-                                    </option>  
-                                    <option value="4" {{ $course->duration == "4" ? "selected" : "" }}>
-                                       4 أيام
-                                    </option> 
-                                    <option value="5" {{ $course->duration == "5" ? "selected" : "" }}>
-                                       5 أيام
-                                    </option> 
-                                    <option value="7" {{ $course->duration == "7" ? "selected" : "" }}>
-                                       7 أيام
-                                    </option> 
-                                    <option value="10" {{ $course->duration == "10" ? "selected" : "" }}>
-                                        "10 أيام"
-                                    </option> 
-                                    
-                                </select>
-                                <span id="durationError" style="color: red;"></span>
+                            <label>حدد مدة الدورة بالايام</label>
+                            <select name="duration" class="form-control formselect" id="durationid">
+                              <!-- <option  value=""  selected>اختار</option>   -->
+                              <option value="3" {{ $course->duration == "3" ? "selected" : "" }}>
+                                  3 أيام
+                              </option>  
+                              <option value="4" {{ $course->duration == "4" ? "selected" : "" }}>
+                                  4 أيام
+                              </option> 
+                              <option value="5" {{ $course->duration == "5" ? "selected" : "" }}>
+                                  5 أيام
+                              </option> 
+                              <option value="7" {{ $course->duration == "7" ? "selected" : "" }}>
+                                  7 أيام
+                              </option> 
+                              <option value="10" {{ $course->duration == "10" ? "selected" : "" }}>
+                                  "10 أيام"
+                              </option> 
+                            </select>
+                            <span id="durationError" style="color: red;"></span>
                           </div>  
                           <div class="form-group col-md-6 col-sm-6">                                   
                                 <label>حدد الدورة مجاني ام مدفوع</label>
@@ -269,12 +264,45 @@ function separateString() {
                               <input type="file" name="image" class="form-control" accept=".JPEG,.JPG,.PNG,.GIF,.TIF,.TIFF" id="imageid">
                               <span id="imageError" style="color: red;"></span>
                           </div>
-                          <div class="form-group col-sm-6 ">
+                          <!-- <div class="form-group col-sm-6 ">
                             <label> فيديو تعريفي عن الدورة </label>
                             <input type="file" name="video" class="form-control" accept=".JPEG,.JPG,.PNG,.GIF,.TIF,.TIFF" id="videoid">
                             <span id="videoError" style="color: red;"></span>
+                          </div> -->
+                          
+                          <div class="col-md-6 ">
+                            <div class=" col-md-12">
+                              <div class="form-group">
+                                <label>ارفق الفيديو</label>
+                                <input type="file" name="file" id="video1"
+                                  onchange="saveVideo(video1,'1','videopath1','progress-bar1','hidden1','videovalue1')"
+                                  class="form-control fileId" accept=".MP4,.FLV,.ogg,.webm,.mov">
+                                <span id="fileError" style="color: red;"></span>
+                              </div>
+                            </div>
+                            <div class="col-md-12 hiddenold" >
+                              <video controls="controls" width="200">
+                                <source src="{{asset('img/courses/video/'.$course->video) }}" type="video/mp4">
+                              </video>
+                            </div>
+                            <div class="col-md-12 hidden1" id="hidden1">
+                              <video controls="controls" id="videopath1" width="200">
+                                <source src="" type="video/mp4">
+                              </video>
+                              <input type="hidden" name="video" class="videovalue" id="videovalue1">
+                            </div>
+                            <div class="col-md-12 ">
+                              <div class="form-group">
+                                <div class="progress prog1">
+                                  <div
+                                    class="progress-bar progress-bar1 prog-bar1 progress-bar-striped progress-bar-animated bg-danger"
+                                    role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                      </div>
+                        </div>
                       <!--<div class="col-md-12"><hr/></div>-->
                     
                        
@@ -316,6 +344,62 @@ function separateString() {
   let videoid = 1;
    $('.hidden1').hide();
   
+
+  function saveVideo(video, id, videopath, progres, hiddenclassss, videovalue) {
+    $(function () {
+      $.ajaxSetup({
+        headers: { 'X-CSRF-Token': '{{csrf_token()}}' }
+      });
+
+      var photo = $(video)[0].files[0];
+      var formData = new FormData();
+      formData.append('file', photo);
+      formData.append('id', id);
+      $.ajax({
+        // start for progress par
+        xhr: function () {
+          var xhr = new window.XMLHttpRequest();
+
+          xhr.upload.addEventListener("progress", function (evt) {
+            if (evt.lengthComputable) {
+              var percentComplete = evt.loaded / evt.total;
+              percentComplete = parseInt(percentComplete * 100);
+
+              $('.' + progres).width(percentComplete + '%');
+              $('.' + progres).html(percentComplete + '%');
+
+            }
+          }, false);
+
+          return xhr;
+        },
+        // end for progress par
+
+        url: "{{route('savevideo')}}",
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+          console.log(data + '>>>>>>>>>>>>>>>>>>>>><<<<' + hiddenclassss);
+          //  var div = document.getElementById(hiddenclassss);
+          // div.classList.remove(hiddenclassss);
+          
+          if(data){
+            $('.hiddenold').hide();
+            $('.' + hiddenclassss).show();
+            $('#' + videopath).attr('src', "http://127.0.0.1:8000/img/courses/video/" + data);
+            document.getElementById(videovalue).value = data;
+          }
+         
+          
+          // document.getElementById(video).value = 'video.png';
+          // $('#'+videovalue).append('eeeeeee');
+        }
+      })
+    })
+  }
+
 
 
 

@@ -39,6 +39,12 @@
 <link rel="stylesheet" href="{{asset('admin/vendors/css/tables/extensions/fixedColumns.dataTables.min.css')}}">
 <link rel="stylesheet" href="{{asset('admin/vendors/css/tables/datatable/select.dataTables.min.css')}}">
 <link rel="stylesheet" href="{{asset('admin/vendors/css/forms/selects/select2.min.css')}}">
+
+
+<link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/forms/selects/selectize.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/forms/selects/selectize.default.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('admin/css-rtl/plugins/forms/selectize/selectize.css')}}">
+ 
 <script src="{{asset('js/app.js')}}"></script>
 
 

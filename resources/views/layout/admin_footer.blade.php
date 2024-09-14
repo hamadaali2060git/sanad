@@ -33,6 +33,13 @@
         
      @endif
     <!---->
+     
+  <script src="{{asset('admin/vendors/js/forms/select/selectize.min.js')}}" type="text/javascript"></script>
+  
+  <script src="{{asset('admin/js/scripts/forms/select/form-selectize.js')}}" type="text/javascript"></script>
+
+
+
  <script src="{{asset('admin/vendors/js/forms/select/select2.full.min.js')}}" type="text/javascript"></script>
   <script src="{{asset('admin/js/scripts/forms/select/form-select2.js')}}" type="text/javascript"></script>
 

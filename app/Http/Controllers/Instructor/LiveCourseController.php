@@ -182,14 +182,16 @@ class LiveCourseController extends Controller
         }else{
             $edit->image = $edit->image;
         }
-        if($request->file('video'))
-        {
-            $video_name = $this->upload($request, 'video', 'img/courses/video');
-            $edit->video=$video_name;
-        }else{
-            $edit->video  = $edit->video;
+        // if($request->file('video'))
+        // {
+        //     $video_name = $this->upload($request, 'video', 'img/courses/video');
+        //     $edit->video=$video_name;
+        // }else{
+        //     $edit->video  = $edit->video;
+        // }
+        if($request->video){
+            $edit->video    = $request->video;
         }
-        
         // dd($request->category_id);
         $edit->category_id    = $request->category_id;
         $edit->title_ar    = $request->title_ar;
@@ -209,6 +211,7 @@ class LiveCourseController extends Controller
         }
         // $edit->image    = $file_name;
         // $edit->video    = $video_name;
+       
         $edit->save();
 
         $length = count($request->mahawir_ar_name);

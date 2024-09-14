@@ -41,178 +41,174 @@
 			                @endif
 		</div>
 		<section id="keytable">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-              	<div class="card-header">
-                  <h4 class="card-title"></h4>
-                  <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                  <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                      <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                      <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                      <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                      <li><a data-action="close"><i class="ft-x"></i></a></li>
-                    </ul>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"></h4>
+              <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+              <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                  <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                  <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                  <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                  <li><a data-action="close"><i class="ft-x"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="card-content collapse show">
+              <div class="card-body card-dashboard">
+                <!-- <div class="row">
+                  <div class="col-md-10">
+                    <form action="{{url('admin/live-course-filter')}}" method="get">
+                      @csrf
+                      <div class="row form-row">
+                        <div class="col-md-5">
+                          <div class="form-group">
+                            <label>بحث عن كورس </label>
+                            <select name="filter" class="form-control select2-diacritics "  placeholder="بحث">
+                                <option  value="0">بانتظار الموافقة</option>
+                                <option  value="1">مقبولة</option>
+                                <option  value="2"> بحاجة إلى تغيير الوقت</option>
+                                <option  value="3">بحاجة الى تأجيل الموعد </option>
+                                <option  value="4">يرجى التواصل معنا</option>
+                                <option  value="5">أنتهت</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-3" style="margin-top: 5px">
+                          <label> </label>
+                          <button type="submit" class="btn btn-primary btn-block"> بحث  </button>
+                        </div>
+                      </div>
+                    </form>
                   </div>
-                </div>
-               
-                <div class="card-content collapse show">
-                  <div class="card-body card-dashboard">
-                      
-                       <div class="row">
-	                        <div class="col-md-10">
-	                        	<form action="{{url('admin/live-course-filter')}}" method="get">
-	                                <!--@csrf-->
-									<div class="row form-row">
-										<div class="col-md-5">
-											<div class="form-group">
-												<label>بحث عن كورس </label>
-												<select name="filter" class="form-control select2-diacritics "  placeholder="بحث">
-                                                    <option  value="0">بانتظار الموافقة</option>
-                                                    <option  value="1">مقبولة</option>
-                                                    <option  value="2"> بحاجة إلى تغيير الوقت</option>
-                                                    <option  value="3">بحاجة الى تأجيل الموعد </option>
-                                                    <option  value="4">يرجى التواصل معنا</option>
-                                                    <option  value="5">أنتهت</option>
-                                                </select>
-											</div>
-										</div>
-										
-										
-										<div class="col-md-3" style="margin-top: 5px">
-											<label> </label>
-											<button type="submit" class="btn btn-primary btn-block"> بحث  </button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-				        <br>
-				        
-                    <div class="card-body">
-						<div class="table-responsive">
-		                    <table class="table table-striped table-bordered keytable-integration">
-							    <thead>
-								    <tr>    
-									   <th>الصورة</th>
-									   <th>العنوان </th>
-									   <th>اسم المدرب</th>
-									   <th>الحالة</th>
-									    <th class="text-center">العمليات</th>
-									 </tr>
-							    </thead>
-								<tbody>                     
-							        @foreach ($courses as $key=>$_item)
-								    <tr>
-									   <td>
-									       <a href="profile" class="avatar avatar-sm mr-2">
-									       <img class="avatar-img" src="{{asset('img/courses/'.$_item->image) }}" alt="Speciality">
-									       </a>
-									   </td>
-									   <td>{{ $_item->title }}</td>    
-									   <td>
-									         <a href="{{url('admin/instructor-profile/'.$_item->course_instructor->id) }}">{{ $_item->course_instructor->name }}</a>
-									   </td> 
-									   <td>
-                                            <a  data-toggle="modal" data-catid="{{ $_item->id }}" data-target="#status{{$key}}" class="delete-course">
-        				                        <button type="button" class=" btn btn-outline-warning">
-        				                           @if($_item->status==0)
-                                                        بانتظار الموافقة
-                                                    @elseif($_item->status==1)  
-                                                        مقبولة
-                                                    @elseif($_item->status==2)  
-                                                       بحاجة إلى  تغيير الوقت
-                                                    @elseif($_item->status==3)
-                                                        بحاجة الى تأجيل الموعد 
-                                                    @elseif($_item->status==4)
-                                                         يرجى التواصل معنا
-                                                    @else
-                                                       انتهت
-                                                    @endif
-                                                </button>
-        				                    </a>
-                                        </td>
-									   <td class="text-right">
-									        <a href="{{url('admin/course-joined/'.$_item->id)}}"  class="edit-course">
-                                                <button type="button" class="btn btn-outline-success "><i class="la la-users"></i></button>
-                                                <span class="editcourse">المسجلين ف الدورة</span>
-                                            </a>
-                                            <a href="{{url('admin/courses/edit/'.$_item->id)}}"  class="edit-course">
-                                                <button type="button" class="btn btn-outline-success "><i class="la la-edit"></i></button>
-                                                <span class="editcourse">تعديل الدورة</span>
-                                            </a>
-				                            <a  data-toggle="modal" data-catid="{{ $_item->id }}" data-target="#delete" class="delete-course">
-				                                <button type="button" class=" btn btn-outline-warning"><i class="la la-trash-o"></i></button>
-				                               <span class="deletecourse"> حذف</span>
-				                            </a>
-										</td>
-		                            </tr>
-		                            <div class="modal fade" id="status{{$key}}" aria-hidden="true" role="dialog">
-                                            <div class="modal-dialog modal-dialog-centered" role="document" >
-                                                <div class="modal-content">                                
-                                                    <div class="modal-body">
-                                                        <div class="form-content p-2">
-                                                            <h4 class="modal-title"> تغيير حالة الكورس </h4>
-                                                           
-                                                            <div class="row text-center">
-                                                            <div class="col-sm-3">
-                                                                </div>
+                </div><br> -->
+            
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered keytable-integration">
+                      <thead>
+                        <tr>    
+                          <th>الصورة</th>
+                          <th>العنوان </th>
+                          <th>اسم المدرب</th>
+                          <th>الحالة</th>
+                            <th class="text-center">العمليات</th>
+                        </tr>
+                      </thead>
+                      <tbody>                     
+                        @foreach ($courses as $key=>$_item)
+                          <tr>
+                            <td>
+                                <a href="profile" class="avatar avatar-sm mr-2">
+                                <img class="avatar-img" src="{{asset('img/courses/'.$_item->image) }}" alt="Speciality">
+                                </a>
+                            </td>
+                            <td>{{ $_item->title }}</td>    
+                            <td>
+                              <a href="{{url('admin/instructor-profile/'.$_item->course_instructor->id) }}">{{ $_item->course_instructor->name }}</a>
+                            </td> 
+                            <td>
+                              <a data-toggle="modal" data-catid="{{ $_item->id }}" data-target="#status{{$key}}" class="delete-course">
+                                <button type="button" class=" btn btn-outline-warning">
+                                  @if($_item->status==0)
+                                        بانتظار الموافقة
+                                    @elseif($_item->status==1)  
+                                        مقبولة
+                                    @elseif($_item->status==2)  
+                                      بحاجة إلى  تغيير الوقت
+                                    @elseif($_item->status==3)
+                                        بحاجة الى تأجيل الموعد 
+                                    @elseif($_item->status==4)
+                                        يرجى التواصل معنا
+                                    @else
+                                      انتهت
+                                    @endif
+                                </button>
+                              </a>
+                            </td>
+                            <td class="text-right">
+                                  <a href="{{url('admin/course-joined/'.$_item->id)}}"  class="edit-course">
+                                      <button type="button" class="btn btn-outline-success "><i class="la la-users"></i></button>
+                                      <span class="editcourse">المسجلين ف الدورة</span>
+                                  </a>
+                                  <a href="{{url('admin/courses/edit/'.$_item->id)}}"  class="edit-course">
+                                      <button type="button" class="btn btn-outline-success "><i class="la la-edit"></i></button>
+                                      <span class="editcourse">تعديل الدورة</span>
+                                  </a>
+                                  <a  data-toggle="modal" data-catid="{{ $_item->id }}" data-target="#delete" class="delete-course">
+                                      <button type="button" class=" btn btn-outline-warning"><i class="la la-trash-o"></i></button>
+                                    <span class="deletecourse"> حذف</span>
+                                  </a>
+                            </td>
+                          </tr>
+                          <div class="modal fade" id="status{{$key}}" aria-hidden="true" role="dialog">
+                                    <div class="modal-dialog modal-dialog-centered" role="document" >
+                                        <div class="modal-content">                                
+                                            <div class="modal-body">
+                                                <div class="form-content p-2">
+                                                    <h4 class="modal-title"> تغيير حالة الكورس </h4>
+                                                  
+                                                    <div class="row text-center">
+                                                    <div class="col-sm-3">
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <form method="post" action="{{route('courses-update-status')}}">
+                                                                @csrf
+                                                                <input type="hidden" name="id" value="{{ $_item->id }}">
                                                                 <div class="col-md-12">
-                                                                    <form method="post" action="{{route('courses-update-status')}}">
-                                                                        @csrf
-                                                                        <input type="hidden" name="id" value="{{ $_item->id }}">
-                                                                        <div class="col-md-12">
-                                                                          <div class="card">
-                                                                            <div class="card-content">
-                                                                              <div class="card-body" style="text-align: right;">
-                                                                                <fieldset>
-                                                                                  <div class="float-left">
-                                                                                    <input type="radio" name="status" class="switchBootstrap" value="1" {{ $_item->status == 1 ? 'checked' : '' }}>
-                                                                                    <label>مقبولة</label>
-                                                                                    <br>
-                                                                                    <input type="radio" name="status" class="switchBootstrap" value="0" {{ $_item->status == 0 ? 'checked' : '' }}>
-                                                                                    <label>بانتظار الموافقة</label>
-                                                                                    <br>
-                                                                                    <input type="radio" name="status" class="switchBootstrap" value="2" {{ $_item->status == 2 ? 'checked' : '' }}>
-                                                                                    <label>بحاجة إلى تغيير الوقت</label>
-                                                                                    <br>
-                                                                                    <input type="radio" name="status" class="switchBootstrap" value="3" {{ $_item->status == 3 ? 'checked' : '' }}>
-                                                                                    <label> بحاجة الى تأجيل الموعد </label>
-                                                                                    <br>
-                                                                                    <input type="radio" name="status" class="switchBootstrap" value="4" {{ $_item->status == 4 ? 'checked' : '' }}>
-                                                                                    <label>يرجى التواصل معنا</label>
-                                                                                    <br>
-                                                                                    <input type="radio" name="status" class="switchBootstrap" value="5" {{ $_item->status == 5 ? 'checked' : '' }}>
-                                                                                    <label>أنتهت</label>
-                                                                                    <br>
-                                                                                  </div>
-                                                                                </fieldset>
-                                                                              </div>
-                                                                            </div>
+                                                                  <div class="card">
+                                                                    <div class="card-content">
+                                                                      <div class="card-body" style="text-align: right;">
+                                                                        <fieldset>
+                                                                          <div class="float-left">
+                                                                            <input type="radio" name="status" class="switchBootstrap" value="1" {{ $_item->status == 1 ? 'checked' : '' }}>
+                                                                            <label>مقبولة</label>
+                                                                            <br>
+                                                                            <input type="radio" name="status" class="switchBootstrap" value="0" {{ $_item->status == 0 ? 'checked' : '' }}>
+                                                                            <label>بانتظار الموافقة</label>
+                                                                            <br>
+                                                                            <input type="radio" name="status" class="switchBootstrap" value="2" {{ $_item->status == 2 ? 'checked' : '' }}>
+                                                                            <label>بحاجة إلى تغيير الوقت</label>
+                                                                            <br>
+                                                                            <input type="radio" name="status" class="switchBootstrap" value="3" {{ $_item->status == 3 ? 'checked' : '' }}>
+                                                                            <label> بحاجة الى تأجيل الموعد </label>
+                                                                            <br>
+                                                                            <input type="radio" name="status" class="switchBootstrap" value="4" {{ $_item->status == 4 ? 'checked' : '' }}>
+                                                                            <label>يرجى التواصل معنا</label>
+                                                                            <br>
+                                                                            <input type="radio" name="status" class="switchBootstrap" value="5" {{ $_item->status == 5 ? 'checked' : '' }}>
+                                                                            <label>أنتهت</label>
+                                                                            <br>
                                                                           </div>
-                                                                        </div>
-                                                                        
-                                                                        <button type="submit" class="btn btn-primary">حفظ التغيير </button>
-                                                                    </form>
+                                                                        </fieldset>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
                                                                 </div>
                                                                 
-                                                            </div>
+                                                                <button type="submit" class="btn btn-primary">حفظ التغيير </button>
+                                                            </form>
                                                         </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
-                                    </div>  
-		                            @endforeach
-			                    </tbody>
-							</table>
-                        </div>			
-					</div>
-                  </div>
+                                        </div>
+                                    </div>
+                            </div>  
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>			
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
 
             

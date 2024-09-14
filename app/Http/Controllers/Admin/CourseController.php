@@ -127,38 +127,77 @@ class CourseController extends Controller
         //         'image.required'=>' يرجي إختيار صورة jpeg,jpg,png,gif ',
         //     ]
         // );
-        $userid = Auth::guard('instructors')->user();
         $date = date('Y-m-d');
         $edit = Course::findOrFail($request->id);
-        if($file=$request->file('image'))
+        if($request->file('image'))
         {
-            $file_extension = $request -> file('image') -> getClientOriginalExtension();
-            $file_name = time().'.'.$file_extension;
-            $file_nameone = $file_name;
-            $path = 'img/courses';
-            $request-> file('image') ->move($path,$file_name);
-            $edit->image  = $file_nameone;
+            $file_name = $this->upload($request, 'image', 'img/courses');
+            $edit->image =$file_name;
         }else{
-            $edit->image  = $edit->image;
+            $edit->image = $edit->image;
         }
-        $edit->title    = $request->title;
+        // if($request->file('video'))
+        // {
+        //     $video_name = $this->upload($request, 'video', 'img/courses/video');
+        //     $edit->video=$video_name;
+        // }else{
+        //     $edit->video  = $edit->video;
+        // }
+        if($request->video){
+            $edit->video    = $request->video;
+        }
+        // dd($request->category_id);
+        $edit->category_id    = $request->category_id;
         $edit->title_ar    = $request->title_ar;
-        $edit->short_detail    = $request->short_detail;
-        $edit->target_group    = $request->target_group;
-        $edit->mahawir    = $request->mahawir;
+        $edit->title_en    = $request->title_en;
+        $edit->description_ar    = $request->description_ar;
+        $edit->description_en    = $request->description_en;
+        
         $edit->date    = $request->date;
         $edit->time    = $request->time;
         $edit->duration    = $request->duration;
-        $edit->slug =Str::slug($request->title, '-', Null);
+        $edit->slug_ar =Str::slug($request->title_ar, '-', Null);
+        $edit->slug_en =Str::slug($request->title_en, '-', Null);
+        $edit->language    = $request->language;
         $edit->payed    = $request->payed;
         if($request->price){
             $edit->price    = $request->price;
-        }else{
-            $edit->price= 0;
         }
+        // $edit->image    = $file_name;
+        // $edit->video    = $video_name;
         $edit->meeting_url    = $request->meeting_url;
         $edit->meeting_password    = $request->meeting_password;
         $edit->save();
+
+        $length = count($request->mahawir_ar_name);
+        if($length > 0)
+        {
+            for($i=0; $i<$length; $i++)
+            {
+                $add_lecture = new SubTitle;
+                $add_lecture->course_id    = $edit->id;
+                $add_lecture->name_ar    = $request->mahawir_ar_name[$i];
+                $add_lecture->name_en    = $request->mahawir_en_name[$i];
+                $add_lecture->save();
+            }
+        }
+        $length = count($request->requirement_ar_name);
+        if($length > 0)
+        {
+            for($i=0; $i<$length; $i++)
+            {  
+                $add_lecture = new CourseRequirement;
+                $add_lecture->course_id    = $edit->id;
+                $add_lecture->name_ar  = $request->requirement_ar_name[$i];
+                $add_lecture->name_en    = $request->requirement_en_name[$i];
+                $add_lecture->save();
+            }
+             
+        }
+
+        
+         
+        // return redirect()->route('courses.index')->with("message", 'تم التعديل بنجاح'); 
         return back()->with("message", 'تم التعديل بنجاح'); 
     }
 

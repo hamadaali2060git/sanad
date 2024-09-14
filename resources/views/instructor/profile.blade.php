@@ -68,7 +68,7 @@
 								<div class="row align-items-center">
 									<div class="col-auto profile-image">
 										<a href="#">
-											<img class="rounded-circle" alt="User Image" src="{{asset('img/profiles/'.$user->photo) }}" width="100px" height="100px">
+											<img class="rounded-circle" alt="User Image" src="{{asset('img/profiles/instructors/'.$user->photo) }}" width="100px" height="100px">
 										</a>
 									</div>
 									<div class="col ml-md-n2 profile-user-info">
@@ -103,9 +103,9 @@
 									@endif -->
     								
 									
-									<li class="nav-item">
+									<!-- <li class="nav-item">
 										<a class="nav-link" data-toggle="tab" href="#cv_tab">السيرة الذاتية</a>
-									</li>
+									</li> -->
 									<li class="nav-item">
 										<a class="nav-link" data-toggle="tab" href="#password_tab">كلمة المرور</a>
 									</li>
@@ -177,7 +177,7 @@
 																<div class="col-12 col-sm-12">
 																	<div class="form-group">
 																		<label> الاسم</label>
-																		<input type="text" name="name" class="form-control" value="{{$user->name}}" disabled>
+																		<input type="text" name="name" class="form-control" value="{{$user->name}}" >
 																	</div>
 																</div>
 																<div class="col-12 col-sm-12">
@@ -460,10 +460,9 @@
 											<h5 class="card-title">تغيير كلمة المرور</h5>
 											<div class="row">
 												<div class="col-md-10 col-lg-6">
-														<form action="{{route('user.changepassword')}}" method="POST" 
-	                                name="le_form"  enctype="multipart/form-data">
-	                               @csrf
-	                            <input type="hidden" name="id" value="{{Auth::guard('instructors')->user()->id}}">
+														<form action="{{route('instructor.changepassword')}}" method="POST" name="le_form"  enctype="multipart/form-data">
+															@csrf
+															<input type="hidden" name="id" value="{{Auth::guard('instructors')->user()->id}}">
 														<!-- <div class="form-group">
 															<label>كلمة المرور الحالية</label>
 															<i class="la la-lock" onclick="myFunction()"></i>
@@ -476,22 +475,22 @@
 														</div> -->
 
 														<fieldset class="form-group position-relative has-icon-left">
-			                        <input type="password" name="current-password" class="form-control form-control-lg input-lg" id="user-password"
-			                        placeholder="ادخل كلمة السر الحالية" required>
-			                       
-			                        <div class="form-control-position">
-			                          <i class="la la-lock" onclick="myFunction()"></i>
-			                        </div>
-			                      </fieldset>
+															<input type="password" name="current-password" class="form-control form-control-lg input-lg" id="user-password"
+															placeholder="ادخل كلمة السر الحالية" required>
+														
+															<div class="form-control-position">
+															<i class="la la-lock" onclick="myFunction()"></i>
+															</div>
+														</fieldset>
 
-														<fieldset class="form-group position-relative has-icon-left">
-			                        <input type="password" name="new-password" class="form-control form-control-lg input-lg" id="user-password-confirm"
-			                        placeholder="ادخل كلمة السر الجديدة" required>
-			                       
-			                        <div class="form-control-position">
-			                          <i class="la la-lock" onclick="myFunction()"></i>
-			                        </div>
-			                      </fieldset>
+																				<fieldset class="form-group position-relative has-icon-left">
+															<input type="password" name="new-password" class="form-control form-control-lg input-lg" id="user-password-confirm"
+															placeholder="ادخل كلمة السر الجديدة" required>
+														
+															<div class="form-control-position">
+															<i class="la la-lock" onclick="myFunction()"></i>
+															</div>
+														</fieldset>
 
 
 

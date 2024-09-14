@@ -1,8 +1,6 @@
 @extends('layout.instructor.main')
 @section('content')
 
-@toastr_css
-
 
 <div class="content-header row">
   <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
@@ -314,6 +312,4 @@
     modal.find('.modal-body #cat_id').val(cat_id);
   })
 </script>
-@toastr_js
-@toastr_render
 @endsection
