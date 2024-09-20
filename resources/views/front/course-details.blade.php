@@ -149,7 +149,17 @@
                                 </div>
                             </li> -->
                     </ul>
-                    <a href="#" class="btn header-btn w-100"> أشترك الان - {{$course->price}} ر.ق </a>
+                    @if (session('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                    @endif
+                    @if(!$courses_joined)
+                        <a href="{{url('courses/joined/'.$course->course_instructor->id.'/'.$course->id)}}" class="btn header-btn w-100"> أشترك الان - {{$course->price}} ر.ق </a>
+                    @else
+                        <a href="#" class="btn header-btn w-100"> مشترك بالفعل - 
+                            {{$course->price}} ر.ق </a>
+                    @endif
                 </div>
             </div>
 

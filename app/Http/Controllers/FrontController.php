@@ -83,20 +83,20 @@ class FrontController extends Controller
 
     public function coursesDetails($slug ,$id)
     {
+        $user = Auth::guard('instructors')->user();
         $course = Course::with('course_instructor')
         ->with('categories')
         ->with('course_requirements')
         ->with('course_subtitle')
-        ->with('user_courses_joined')
-        ->with('user_joined')
         ->selection()
         ->where('id',$id)
         ->first();
 
+        $courses_joined = Courses_joined::where('student_id',$user->id)->where('course_id',$course->id)->first();
         // $course = new CourseResource($details);
         // return $course;
-        // dd($course);
-        return view('front.course-details',compact('course'));
+        // dd($courses_joined);
+        return view('front.course-details',compact('course','courses_joined'));
     }
     public function myProfile()
     {
@@ -107,18 +107,22 @@ class FrontController extends Controller
             return redirect('/');
         return view('front.myprofile',compact('user'));
     }
-    public function joinedCourses(Request $request)
+    public function coursesJoined(Request $request,$instructor_id, $course_id)
     {
-        $userid = Auth::guard('instructors-api')->user();
-        if(!$userid)
-            return $this->returnError(__('front.You must login first'));
-        $add=new Courses_joined;
-        $add->student_id=$userid->id;
-        $add->instructor_id=$request->instructor_id;
-        $add->course_id=$request->course_id;
-        $add->status=1;
-        $add-> save();
-        return back()->with("message", 'تم التعديل بنجاح');
+        $user = Auth::guard('instructors')->user();
+        if(!$user)
+            return redirect('user-login');
+        $courses_joined = Courses_joined::where('student_id',$instructor_id)->where('course_id',$course_id)->first();
+        if(!$courses_joined){
+            $add=new Courses_joined;
+            $add->student_id=$user->id;
+            $add->instructor_id=$instructor_id;
+            $add->course_id=$course_id;
+            $add->status=1;
+            $add-> save();
+        }
+        
+        return back()->with("message", 'تم الاشتراك بنجاح');
     }
     public function myCourses()
     {

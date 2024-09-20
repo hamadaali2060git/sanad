@@ -35,7 +35,8 @@ Auth::routes();
   Route::get('my-profile', 'FrontController@myProfile');
   Route::post('updateprofile', 'FrontController@updateProfile')->name('updateprofile');
   Route::get('my-courses', 'FrontController@myCourses');
-
+  Route::get('courses/joined/{instructor_id}/{course_id}', 'FrontController@coursesJoined');
+  
   Route::get('about', 'FrontController@about');
 
   Route::get('privacy-policy', 'FrontController@policy');

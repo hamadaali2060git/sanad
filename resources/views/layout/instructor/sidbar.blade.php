@@ -31,15 +31,14 @@
         </li> -->
         
         <li class="nav-item {{ Request::is('instructor/courses') ? 'active' : '' }}">
-            <a href="{{ url('instructor/courses') }}">
-                <i class="la la-envelope"></i><span class="menu-title" data-i18n=""> الدورات الاونلاين</span></a>
+            <a href="{{ url('instructor/courses') }}"> <i class="la la-envelope"></i><span class="menu-title" data-i18n=""> الدورات الاونلاين</span></a>
         </li>
-        <li class="nav-item {{ Request::is('instructor/terms') ? 'active' : '' }}">
+        <!-- <li class="nav-item {{ Request::is('instructor/terms') ? 'active' : '' }}">
             <a href="{{url('instructor/terms')}}">
                 <i class="la la-envelope"></i>
                 <span class="menu-title" data-i18n="">إرشادات المدرب</span>
             </a>
-        </li>
+        </li> -->
         <li class="nav-item {{ Request::is('instructor/instructor-video') ? 'active' : '' }}">
             <a href="{{url('instructor/instructor-video')}}">
                 <i class="la la-envelope"></i>

@@ -50,22 +50,32 @@
 
                                     <div class="featured-date mb-2">
                                         <i class="fas fa-calendar-alt"></i>
-                                        <span>30 Jun</span>
+                                        <span>{{$course->date}}</span>
                                     </div>
 
 
                                     <div class="featured-date mb-2">
                                         <i class="fas fa-money-bill-alt"></i>
-                                        <span>1000 EGP</span>
+                                        <span> @if($course->price !=0)
+                                            {{$course->price}} {{__('front.currency')}}
+                                            @else
+                                            {{__('front.free')}}
+                                            @endif</span>
                                     </div>
-
-                                    <div>
+                                    <p class=" font-weight-bold mb-2 text-center">
+                                        @if($course->meeting_url)
+                                        <a  class="text-info" href="{{url($course->meeting_url)}}">
+                                           رابط حضور الدوره 
+                                        </a>
+                                        @endif
+                                    </p>
+                                    <!-- <div>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star"></span>
                                         <span class="fa fa-star"></span>
-                                    </div>
+                                    </div> -->
 
                                 </div>
                             </a>
