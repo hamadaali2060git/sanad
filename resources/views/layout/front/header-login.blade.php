@@ -211,6 +211,7 @@ App::setLocale($langg);
                         <img src="{{asset('img/profiles/profile.png') }}" class="img-thumbnail profile-img-edit">
                         @endif
                     </button>
+                    @if(Auth::guard('instructors')->user()->type=='student')
                     <div class="dropdown-menu pb-0" aria-labelledby="dropdownMenuButton">
                         <!-- <div class="pl-3 pr-3 pt-2 pb-1">
                                     <img src="{{asset('img/profiles/students/'.Auth::guard('instructors')->user()->photo) }}" class="profile-img">
@@ -218,23 +219,18 @@ App::setLocale($langg);
                                     <p class="text-small ml-5 pl-2">{{Auth::guard('instructors')->user()->email}}</p>
                                 </div>
                                 <hr> -->
-
                         <a class="dropdown-item" href="{{url('my-profile')}}">
                             <i class="fas fa-user pr-2"></i> {{__('front.My Profile')}}
                         </a>
-
                         <!-- <a class="dropdown-item" href="mywishlist.html">
                                     <i class="fas fa-heart pr-2"></i> My Wishlist
                                 </a> -->
-
                         <a class="dropdown-item" href="{{url('my-courses')}}">
                             <i class="fas fa-video pr-2"></i> {{__('front.My Courses')}}
                         </a>
-
                         <!-- <a class="dropdown-item" href="become-instructor.html">
                                     <i class="fas fa-chalkboard-teacher pr-2"></i> Become an Instructor
                                 </a> -->
-
                         <div class=" bg-light text-center mt-2 pt-2 pb-2">
                             <a class="dropdown-item main-color font-weight-600 text-medium"
                                 href="{{ route('signoutinstructors') }}"
@@ -246,11 +242,29 @@ App::setLocale($langg);
                                 @csrf
                             </form>
                         </div>
-
-
-
-
                     </div>
+                    @else
+                    <div class="dropdown-menu pb-0" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{url('instructor/dashboard')}}">
+                            <!-- <i class="fas fa-user pr-2"></i>  -->
+                            لوحة تحكم المدرب
+                        </a>
+                        <!-- <a class="dropdown-item" href="{{url('my-courses')}}">
+                            <i class="fas fa-video pr-2"></i> {{__('front.My Courses')}}
+                        </a> -->
+                        <div class=" bg-light text-center mt-2 pt-2 pb-2">
+                            <a class="dropdown-item main-color font-weight-600 text-medium"
+                                href="{{ route('signoutinstructors') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                تسجيل الخروج
+                            </a>
+                            <form id="logout-form" action="{{ route('signoutinstructors') }}" method="POST"
+                                class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
+                    @endif
                 </div>
 
             </div>

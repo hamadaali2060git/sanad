@@ -9,7 +9,7 @@ App::setLocale($langg);
 @endphp
 <div class="bg-light p-3 pt-4 mb-3 bg-white text-center">
     @if(Auth::guard('instructors')->user()->photo)
-    <img src="{{asset('img/profiles/students/profile.png'.Auth::guard('instructors')->user()->photo) }}"
+    <img src="{{asset('img/profiles/students/'.Auth::guard('instructors')->user()->photo) }}"
         class="img-thumbnail profile-img-edit">
     @else
     <img src="{{asset('img/profiles/profile.png') }}" class="img-thumbnail profile-img-edit">

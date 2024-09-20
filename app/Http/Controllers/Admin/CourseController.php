@@ -6,7 +6,8 @@ use App\Course;
 use App\Category;
 use Illuminate\Http\Request;
 use Auth;
-use App\Instructor;
+use App\SubTitle;
+use App\CourseRequirement;
 use Illuminate\Support\Str;
 use App\Courses_joined;
 class CourseController extends Controller
@@ -129,6 +130,7 @@ class CourseController extends Controller
         // );
         $date = date('Y-m-d');
         $edit = Course::findOrFail($request->id);
+        
         if($request->file('image'))
         {
             $file_name = $this->upload($request, 'image', 'img/courses');
@@ -165,8 +167,7 @@ class CourseController extends Controller
         }
         // $edit->image    = $file_name;
         // $edit->video    = $video_name;
-        $edit->meeting_url    = $request->meeting_url;
-        $edit->meeting_password    = $request->meeting_password;
+       
         $edit->save();
 
         $length = count($request->mahawir_ar_name);
@@ -176,8 +177,14 @@ class CourseController extends Controller
             {
                 $add_lecture = new SubTitle;
                 $add_lecture->course_id    = $edit->id;
-                $add_lecture->name_ar    = $request->mahawir_ar_name[$i];
-                $add_lecture->name_en    = $request->mahawir_en_name[$i];
+                if(isset($request->mahawir_ar_name[$i])){
+                    $add_lecture->name_ar = $request->mahawir_ar_name[$i];
+                }
+
+                if(isset($request->mahawir_en_name[$i])){
+                    $add_lecture->name_en = $request->mahawir_en_name[$i];
+                }
+                
                 $add_lecture->save();
             }
         }
@@ -188,15 +195,16 @@ class CourseController extends Controller
             {  
                 $add_lecture = new CourseRequirement;
                 $add_lecture->course_id    = $edit->id;
-                $add_lecture->name_ar  = $request->requirement_ar_name[$i];
-                $add_lecture->name_en    = $request->requirement_en_name[$i];
+                if(isset($request->requirement_ar_name[$i])){
+                    $add_lecture->name_ar  = $request->requirement_ar_name[$i];
+                }
+                if(isset($request->requirement_en_name[$i])){
+                    $add_lecture->name_en    = $request->requirement_en_name[$i];
+                }
                 $add_lecture->save();
             }
              
         }
-
-        
-         
         // return redirect()->route('courses.index')->with("message", 'تم التعديل بنجاح'); 
         return back()->with("message", 'تم التعديل بنجاح'); 
     }
