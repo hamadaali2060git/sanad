@@ -4,7 +4,7 @@
 
 <script>
   function separateString() {
-    mahawirArId = document.getElementById("mahawir_arid");
+    mahawirArId = document.getElementById("mahawirAr");
     mahawir_ar_array = mahawirArId.value.split(',');
     // console.log(mahawirArray[0]);
     for (let i = 0; i < mahawir_ar_array.length; i++) {
@@ -14,7 +14,7 @@
         `);
     }
 
-    mahawirEnId = document.getElementById("mahawir_enid");
+    mahawirEnId = document.getElementById("mahawirEn");
     mahawir_en_array = mahawirEnId.value.split(',');
     console.log(mahawir_en_array[0]);
     for (let i = 0; i < mahawir_en_array.length; i++) {
@@ -24,7 +24,7 @@
         `);
     }
 
-    requirementArId = document.getElementById("requirement_arid");
+    requirementArId = document.getElementById("requirementAr");
     requirement_ar_array = requirementArId.value.split(',');
     console.log(requirement_ar_array[0]);
     for (let i = 0; i < requirement_ar_array.length; i++) {
@@ -35,7 +35,7 @@
     }
 
 
-    mahawirEnId = document.getElementById("requirement_enid");
+    mahawirEnId = document.getElementById("requirementEn");
     mahawir_en_array = mahawirEnId.value.split(',');
     console.log(mahawir_en_array[0]);
     for (let i = 0; i < mahawir_en_array.length; i++) {
@@ -215,8 +215,7 @@
 
                 <div class="form-group col-md-6">
                   <label> محاور الدورة عربي</label>
-                  <input name="mahawir_ar" type="text" class="input-selectize" id="mahawirAr"
-                    value="" multiple>
+                  <input name="mahawir_ar" type="text" class="input-selectize" id="mahawirAr" value="" multiple>
                   <div id="add_mahawir_ar"></div>
                   @error('mahawir_ar')
                   <span class="text-danger">{{$message}}</span>
@@ -225,8 +224,7 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label> محاور الدورة انجليزي</label>
-                  <input name="mahawir_en" type="text" class="input-selectize" id="mahawirEn"
-                    value="" multiple>
+                  <input name="mahawir_en" type="text" class="input-selectize" id="mahawirEn" value="" multiple>
                   <div id="add_mahawir_en"></div>
                   @error('mahmahawir_enawir')
                   <span class="text-danger">{{$message}}</span>
@@ -235,8 +233,7 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label>متطلبات الدورة عربي</label>
-                  <input name="course_requirement_ar[]" type="text" class="input-selectize" id="requirementAr"
-                    value="">
+                  <input name="course_requirement_ar[]" type="text" class="input-selectize" id="requirementAr" value="">
                   <div id="add_requirement_ar"></div>
                   @error('course_requirement_ar')
                   <span class="text-danger">{{$message}}</span>
@@ -245,8 +242,7 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label>متطلبات الدورة انجليزي</label>
-                  <input name="course_requirement_en[]" type="text" class="input-selectize" id="requirementEn"
-                    value="">
+                  <input name="course_requirement_en[]" type="text" class="input-selectize" id="requirementEn" value="">
                   <div id="add_requirement_en"></div>
                   @error('course_requirement_en')
                   <span class="text-danger">{{$message}}</span>
@@ -299,7 +295,8 @@
               </div>
               <!--<div class="col-md-12"><hr/></div>-->
 
-              <div class="col-md-12" style="color: #FF4961; padding-right: 23px;padding-left: 23px" id="upload-error"> </div>
+              <div class="col-md-12" style="color: #FF4961; padding-right: 23px;padding-left: 23px" id="upload-error">
+              </div>
               <br>
 
               <div class="col-12 col-md-12">
@@ -378,7 +375,7 @@
           console.log(data + '>>>>>>>>>>>>>>>>>>>>><<<<' + hiddenclassss);
           //  var div = document.getElementById(hiddenclassss);
           // div.classList.remove(hiddenclassss);
-          if(data){
+          if (data) {
             $('.' + hiddenclassss).show();
             $('#' + videopath).attr('src', "http://127.0.0.1:8000/img/courses/video/" + data);
             document.getElementById(videovalue).value = data;
@@ -396,7 +393,7 @@
 
   function Validateallinput() {
 
-    
+
     var titleArId = document.getElementById("titleAr");
     var titleArError = document.getElementById("titleArError");
 
@@ -438,7 +435,7 @@
 
     var requirementEn = document.getElementById("requirementEn");
     var RequirementEnError = document.getElementById("RequirementEnError");
-    
+
     var imageid = document.getElementById("imageid");
     var imageError = document.getElementById("imageError");
 
@@ -457,14 +454,14 @@
     titleEnError.innerHTML = "";
 
     if (categoryId.value == "") {
-      categoryError.innerHTML = "يجب اختيار تخصص"; 
+      categoryError.innerHTML = "يجب اختيار تخصص";
       // titleid.focus(); 
       return false;
     }
     categoryError.innerHTML = "";
 
     if (languageId.value == "") {
-      languageError.innerHTML ="اللغة مطلوبه";
+      languageError.innerHTML = "اللغة مطلوبه";
       // titleid.focus(); 
       return false;
     }
@@ -496,7 +493,7 @@
       return false;
     }
     descriptionArError.innerHTML = "";
-    
+
     if (descriptionEnId.value == "") {
       descriptionEnError.innerHTML = "يرجى كتابة شرح انجليزي توضيحي عن الدورة";
       // titleid.focus(); 
@@ -504,27 +501,27 @@
     }
     descriptionEnError.innerHTML = "";
 
-    if(mahawirArId.value == "") {
+    if (mahawirArId.value == "") {
       mahawirArError.innerHTML = "يرجى ادخال محاور الدورة عربي";
       // titleid.focus(); 
       return false;
     }
     mahawirArError.innerHTML = "";
 
-    if(mahawirEnId.value == "") {
+    if (mahawirEnId.value == "") {
       mahawirEnError.innerHTML = "يرجى ادخال محاور الدورة انجليزي";
       return false;
     }
     mahawirEnError.innerHTML = "";
 
-    if(requirementArId.value == "") {
+    if (requirementArId.value == "") {
       requirementArError.innerHTML = "يرجى ادخال متطلبات الدورة عربي";
       return false;
     }
     requirementArError.innerHTML = "";
 
-    
-    if(requirementEn.value == "") {
+
+    if (requirementEn.value == "") {
       RequirementEnError.innerHTML = "يرجى ادخال متطلبات الدورة انجليزي";
       return false;
     }
@@ -535,8 +532,8 @@
     // }
     // requirementEnError.innerHTML = "";
 
-    
-   
+
+
 
     // if(!/^[0-9]+$/.test(durationid.value)){
     //   durationError.innerHTML = "الرجاء إدخال رقم فقط";

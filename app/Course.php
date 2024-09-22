@@ -12,9 +12,17 @@ class Course extends Model
     {
       return $this->hasMany(CourseRequirement::class,'course_id','id')->selection();
     }
+    public function courserequirements()
+    {
+      return $this->hasMany(CourseRequirement::class,'course_id','id');
+    }
     public function course_subtitle()
     {
       return $this->hasMany(SubTitle::class,'course_id','id')->selection();
+    }
+    public function coursesubtitle()
+    {
+      return $this->hasMany(SubTitle::class,'course_id','id');
     }
     public function user_courses_joined()
     {

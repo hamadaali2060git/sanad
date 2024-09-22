@@ -164,9 +164,14 @@ class LiveCourseController extends Controller
         // dd($straight->id);
         // dd($straight);
         // $dd=Course::where('id',$course->id)->first();
-        // dd($course);
+        
+        $course = Course::
+        with('courserequirements')
+        ->with('coursesubtitle')
+        ->where('id',$course->id)
+        ->first();
         $categories=Category::all();
-       
+    //    dd($course);
         return view('instructor.livecourses.edit',compact('course','categories'));
     }
 
@@ -214,6 +219,16 @@ class LiveCourseController extends Controller
        
         $edit->save();
 
+        $sub_titles= SubTitle::where('course_id',$course->id)->get();
+        foreach ($sub_titles as $subs) {         
+            $delete_sub = SubTitle::findOrFail($subs->id);
+            $delete_sub->delete();
+        }
+        $course_requirement= CourseRequirement::where('course_id',$course->id)->get();
+        foreach($course_requirement as $requirement) {         
+            $delete_requirement = CourseRequirement::findOrFail($requirement->id);
+            $delete_requirement->delete();
+        }
         $length = count($request->mahawir_ar_name);
         if($length > 0)
         {
@@ -274,11 +289,7 @@ class LiveCourseController extends Controller
                 $delete_course = Courses_joined::findOrFail($item->id);
                 $delete_course->delete();
             }
-            $sessionss= Session::where('liveId',$delete->id)->get();
-            foreach ($sessionss as $item) {         
-                $delete_course = Courses_joined::findOrFail($item->id);
-                $delete_course->delete();
-            }
+            
         }
         $delete->delete();
         return redirect()->route('courses.index')->with("message",'تم الحذف بنجاح'); 

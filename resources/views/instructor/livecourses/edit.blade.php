@@ -221,9 +221,15 @@
 
 
                 <div class="form-group col-md-6">
-                  <label> محاور الدورة عربي</label>
-                  <input name="mahawir_ar" type="text" class="input-selectize" id="mahawir_arid"
-                    value="الحافز,التدرب,الوعي الذاتي,التطور الذاتي" multiple>
+                  <label> محاور الدورة عربي
+                  </label>
+                  <input name="mahawir_ar" type="text" class="input-selectize" id="mahawir_arid" value="
+                    @if($course->coursesubtitle)
+                    @foreach($course->coursesubtitle as $mahawir)
+                    {{ $mahawir->name_ar }}
+                    @if(!$loop->last),@endif
+                    @endforeach
+                    @endif" multiple>
                   <div id="add_mahawir_ar"></div>
                   <!-- <input name="mahawir_ar[]" type="text" class="input-selectize" id="mahawir_arid" value="الحافز,التدرب,الوعي الذاتي,التطور الذاتي" multiple> -->
                   @error('mahawir_ar')
@@ -233,8 +239,13 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label> محاور الدورة انجليزي</label>
-                  <input name="mahawir_en" type="text" class="input-selectize" id="mahawir_enid"
-                    value="Motivation, training, self-awareness, self-development" multiple>
+                  <input name="mahawir_en" type="text" class="input-selectize" id="mahawir_enid" value="
+                    @if($course->coursesubtitle)
+                    @foreach($course->coursesubtitle as $mahawir)
+                    {{ $mahawir->name_en }}
+                    @if(!$loop->last),@endif
+                    @endforeach
+                    @endif" multiple>
                   <div id="add_mahawir_en"></div>
                   <!-- <input name="mahawir_en[]" type="text" class="input-selectize" id="mahawir_enid" value="الحافز,التدرب,الوعي الذاتي,التطور الذاتي" multiple> -->
                   @error('mahmahawir_enawir')
@@ -244,8 +255,14 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label>متطلبات الدورة عربي</label>
-                  <input name="course_requirement_ar[]" type="text" class="input-selectize" id="requirement_arid"
-                    value="هتمامك بموضوع الدورة ,ورغبتك في التعلم.">
+                  <input name="course_requirement_ar[]" type="text" class="input-selectize" id="requirement_arid" value="
+                     @if($course->courserequirements)
+                    @foreach($course->courserequirements as $requirement)
+                    {{ $requirement->name_ar }}
+                    @if(!$loop->last),@endif
+                    @endforeach
+                    @endif
+                    ">
                   <div id="add_requirement_ar"></div>
                   <!-- <input name="course_requirement_ar[]" type="text" class="input-selectize" id="requirement_arid" value="هتمامك بموضوع الدورة ,ورغبتك في التعلم."> -->
                   @error('course_requirement_ar')
@@ -255,8 +272,14 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label>متطلبات الدورة انجليزي</label>
-                  <input name="course_requirement_en[]" type="text" class="input-selectize" id="requirement_enid"
-                    value="Your interest in the course topic, and your desire to learn.">
+                  <input name="course_requirement_en[]" type="text" class="input-selectize" id="requirement_enid" value="
+                    @if($course->courserequirements)
+                      @foreach($course->courserequirements as $requirement)
+                        {{ $requirement->name_en }}
+                        @if(!$loop->last),@endif
+                      @endforeach
+                    @endif
+                    ">
                   <div id="add_requirement_en"></div>
                   <!-- <input name="course_requirement_en[]" type="text" class="input-selectize" id="requirement_enid" value="هتمامك بموضوع الدورة ,ورغبتك في التعلم."> -->
                   @error('course_requirement_en')
