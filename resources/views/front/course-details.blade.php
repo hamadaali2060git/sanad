@@ -154,11 +154,17 @@
                         {{ session('message') }}
                     </div>
                     @endif
+                    @if(Auth::guard('instructors')->user())
                     @if(!$courses_joined)
-                        <a href="{{url('courses/joined/'.$course->course_instructor->id.'/'.$course->id)}}" class="btn header-btn w-100"> أشترك الان - {{$course->price}} ر.ق </a>
+                    <a href="{{url('courses/joined/'.$course->course_instructor->id.'/'.$course->id)}}"
+                        class="btn header-btn w-100"> أشترك الان - {{$course->price}} ر.ق </a>
                     @else
-                        <a href="#" class="btn header-btn w-100"> مشترك بالفعل - 
-                            {{$course->price}} ر.ق </a>
+                    <a href="#" class="btn header-btn w-100"> مشترك بالفعل -
+                        {{$course->price}} ر.ق </a>
+                    @endif
+                    @else
+                    <a href="{{route('user-login')}}" class="btn header-btn w-100"> أشترك
+                        الان - {{$course->price}} ر.ق </a>
                     @endif
                 </div>
             </div>

@@ -92,11 +92,16 @@ class FrontController extends Controller
         ->where('id',$id)
         ->first();
 
-        $courses_joined = Courses_joined::where('student_id',$user->id)->where('course_id',$course->id)->first();
+        if($user){
+            $courses_joined = Courses_joined::where('student_id',$user->id)->where('course_id',$course->id)->first();
+            return view('front.course-details',compact('course','courses_joined'));
+        }else{
+            return view('front.course-details',compact('course'));
+        }
         // $course = new CourseResource($details);
         // return $course;
         // dd($courses_joined);
-        return view('front.course-details',compact('course','courses_joined'));
+        
     }
     public function myProfile()
     {
