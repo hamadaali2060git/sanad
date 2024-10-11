@@ -27,15 +27,15 @@ class CreateCoursesTable extends Migration
             $table->string('time');
             $table->string('duration');
             $table->string('language');
-            $table->integer('payed');
-            $table->float('price');
+            $table->integer('payed')->nullable(); 
+            $table->float('price')->default(0);
             $table->text('image'); 
             $table->text('video')->nullable(); 
             $table->integer('status')->default(0);
             $table->text('meeting_url')->nullable(); 
             $table->text('meeting_password')->nullable(); 
             $table->text('meeting_id')->nullable(); 
-            
+            $table->timestamps();
         });
     }
 

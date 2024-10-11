@@ -132,8 +132,15 @@ class LiveCourseController extends Controller
             {
                 $add_lecture = new SubTitle;
                 $add_lecture->course_id    = $add->id;
-                $add_lecture->name_ar    = $request->mahawir_ar_name[$i];
-                $add_lecture->name_en    = $request->mahawir_en_name[$i];
+                if(isset($request->mahawir_ar_name[$i])){
+                    $add_lecture->name_ar = $request->mahawir_ar_name[$i];
+                }
+
+                if(isset($request->mahawir_en_name[$i])){
+                    $add_lecture->name_en = $request->mahawir_en_name[$i];
+                }
+                // $add_lecture->name_ar    = $request->mahawir_ar_name[$i];
+                // $add_lecture->name_en    = $request->mahawir_en_name[$i];
                 
                 $add_lecture->save();
                 
@@ -148,8 +155,14 @@ class LiveCourseController extends Controller
             {  
                 $add_lecture = new CourseRequirement;
                 $add_lecture->course_id    = $add->id;
-                $add_lecture->name_ar  = $request->requirement_ar_name[$i];
-                $add_lecture->name_en    = $request->requirement_en_name[$i];
+                if(isset($request->requirement_ar_name[$i])){
+                    $add_lecture->name_ar  = $request->requirement_ar_name[$i];
+                }
+                if(isset($request->requirement_en_name[$i])){
+                    $add_lecture->name_en    = $request->requirement_en_name[$i];
+                }
+                // $add_lecture->name_ar  = $request->requirement_ar_name[$i];
+                // $add_lecture->name_en    = $request->requirement_en_name[$i];
                 $add_lecture->save();
             }
              

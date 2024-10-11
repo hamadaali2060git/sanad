@@ -98,7 +98,7 @@
                                 <div class="form-group col-md-6 col-sm-12">
                                     <label>عنوان الدورة عربي</label>
                                     <input type="text" name="title_ar" class="form-control" value="{{$edit->title_ar}}"
-                                        id="titleid">
+                                        id="titleAr">
                                     @error('title_ar')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -107,7 +107,7 @@
                                 <div class="form-group col-md-6 col-sm-12">
                                     <label>عنوان الدورة انجليزي</label>
                                     <input type="text" name="title_en" class="form-control" value="{{$edit->title_en}}"
-                                        id="titleid">
+                                        id="titleEn">
                                     @error('title')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="form-group col-md-6 col-sm-6">
                                     <label> التخصص </label>
-                                    <select class="form-control select" name="category_id">
+                                    <select class="form-control select" name="category_id" id="categoryId">
                                         <!-- <option>اختر التخصص</option> -->
                                         @foreach ($categories as $_item)
                                         <option value="{{$_item->id}}" {{ $edit->id == $_item->id ? "selected" : ""
@@ -123,11 +123,12 @@
                                         <!-- <option value="{{$_item->id}}" >{{$_item->title_ar}}</option> -->
                                         @endforeach
                                     </select>
+                                    <span id="categoryError" style="color: red;"></span>
                                 </div>
                                 <div class="form-group col-md-6 col-sm-12">
                                     <label>لغة الدورة</label>
                                     <input type="text" name="language" class="form-control" value="{{$edit->language}}"
-                                        id="titleid">
+                                        id="languageid">
                                     @error('language')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -211,7 +212,7 @@
                                 <div class="form-group col-md-6 col-sm-6">
                                     <label> شرح توضيحي عن الدورة عربي</label>
                                     <textarea name="description_ar" cols="30" rows="2" class="form-control"
-                                        id="short_detailid">{{$edit->description_ar}}</textarea>
+                                        id="descriptionAr">{{$edit->description_ar}}</textarea>
                                     @error('description_ar')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -220,7 +221,7 @@
                                 <div class="form-group col-md-6 col-sm-6">
                                     <label>شرح توضيحي عن الدورة انجليزي</label>
                                     <textarea name="description_en" cols="30" rows="2" class="form-control"
-                                        id="short_detailid">{{$edit->description_en}}</textarea>
+                                        id="descriptionEn">{{$edit->description_en}}</textarea>
                                     @error('description_en')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -231,47 +232,67 @@
                                 <div class="form-group col-md-6">
                                     <label> محاور الدورة عربي</label>
                                     <input name="mahawir_ar" type="text" class="input-selectize" id="mahawir_arid"
-                                        value="الحافز,التدرب,الوعي الذاتي,التطور الذاتي" multiple>
+                                        value="@if($edit->coursesubtitle)
+                    @foreach($edit->coursesubtitle as $mahawir)
+                    {{ $mahawir->name_ar }}
+                    @if(!$loop->last),@endif
+                    @endforeach
+                    @endif" multiple>
                                     <div id="add_mahawir_ar"></div>
                                     <!-- <input name="mahawir_ar[]" type="text" class="input-selectize" id="mahawir_arid" value="الحافز,التدرب,الوعي الذاتي,التطور الذاتي" multiple> -->
                                     @error('mahawir_ar')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
-                                    <span id="mahawirError" style="color: red;"></span>
+                                    <span id="mahawirArError" style="color: red;"></span>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label> محاور الدورة انجليزي</label>
                                     <input name="mahawir_en" type="text" class="input-selectize" id="mahawir_enid"
-                                        value="Motivation, training, self-awareness, self-development" multiple>
+                                        value="@if($edit->coursesubtitle)
+                    @foreach($edit->coursesubtitle as $mahawir)
+                    {{ $mahawir->name_en }}
+                    @if(!$loop->last),@endif
+                    @endforeach
+                    @endif" multiple>
                                     <div id="add_mahawir_en"></div>
                                     <!-- <input name="mahawir_en[]" type="text" class="input-selectize" id="mahawir_enid" value="الحافز,التدرب,الوعي الذاتي,التطور الذاتي" multiple> -->
                                     @error('mahmahawir_enawir')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
-                                    <span id="mahawirError" style="color: red;"></span>
+                                    <span id="mahawirEnError" style="color: red;"></span>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>متطلبات الدورة عربي</label>
                                     <input name="course_requirement_ar[]" type="text" class="input-selectize"
-                                        id="requirement_arid" value="هتمامك بموضوع الدورة ,ورغبتك في التعلم.">
+                                        id="requirement_arid" value="
+                                        @if($edit->courserequirements)
+                                            @foreach($edit->courserequirements as $requirement)
+                                            {{ $requirement->name_ar }}
+                                            @if(!$loop->last),@endif
+                                            @endforeach
+                                        @endif">
                                     <div id="add_requirement_ar"></div>
                                     <!-- <input name="course_requirement_ar[]" type="text" class="input-selectize" id="requirement_arid" value="هتمامك بموضوع الدورة ,ورغبتك في التعلم."> -->
                                     @error('course_requirement_ar')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
-                                    <span id="ccourseRequirementArError" style="color: red;"></span>
+                                    <span id="requirementArError" style="color: red;"></span>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>متطلبات الدورة انجليزي</label>
                                     <input name="course_requirement_en[]" type="text" class="input-selectize"
-                                        id="requirement_enid"
-                                        value="Your interest in the course topic, and your desire to learn.">
+                                        id="requirement_enid" value="@if($edit->courserequirements)
+                                                @foreach($edit->courserequirements as $requirement)
+                                                    {{ $requirement->name_en }}
+                                                    @if(!$loop->last),@endif
+                                                @endforeach
+                                                @endif">
                                     <div id="add_requirement_en"></div>
                                     <!-- <input name="course_requirement_en[]" type="text" class="input-selectize" id="requirement_enid" value="هتمامك بموضوع الدورة ,ورغبتك في التعلم."> -->
                                     @error('course_requirement_en')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
-                                    <span id="ccourseRequirementEnError" style="color: red;"></span>
+                                    <span id="RequirementEnError" style="color: red;"></span>
                                 </div>
 
                                 <div class="form-group col-sm-6 ">
@@ -328,7 +349,7 @@
                             <div class="col-12 col-md-12">
                                 <div class="form-group col-12 col-md-4">
                                     <button type="submit" class="btn btn-primary btn-block"
-                                        onclick="return separateString()">حفظ
+                                        onclick="return Validateallinput()">حفظ
                                     </button>
                                 </div>
                                 <div class="loader-wrapper col-md-4">
@@ -364,6 +385,178 @@
     let videoid = 1;
     $('.hidden1').hide();
 
+
+    function Validateallinput() {
+
+        var titleArId = document.getElementById("titleAr");
+        var titleArError = document.getElementById("titleArError");
+
+        var titleEnId = document.getElementById("titleEn");
+        var titleEnError = document.getElementById("titleEnError");
+
+        var categoryId = document.getElementById("categoryId");
+        var categoryError = document.getElementById("categoryError");
+
+        var languageId = document.getElementById("languageid");
+        var languageError = document.getElementById("languageError");
+
+        var dateId = document.getElementById("dateid");
+        var dateError = document.getElementById("dateError");
+
+        var timeid = document.getElementById("timeid");
+        var timeError = document.getElementById("timeError");
+
+        var durationid = document.getElementById("durationid");
+        var durationError = document.getElementById("durationError");
+
+        var descriptionArId = document.getElementById("descriptionAr");
+        var descriptionArError = document.getElementById("descriptionArError");
+
+        var descriptionEnId = document.getElementById("descriptionEn");
+        var descriptionEnError = document.getElementById("descriptionEnError");
+
+        var mahawir_arid = document.getElementById("mahawir_arid");
+        var mahawirArError = document.getElementById("mahawirArError");
+
+        var mahawir_enid = document.getElementById("mahawir_enid");
+        var mahawirEnError = document.getElementById("mahawirEnError");
+
+        var requirement_arid = document.getElementById("requirement_arid");
+        var requirementArError = document.getElementById("requirementArError");
+
+        var requirement_enid = document.getElementById("requirement_enid");
+        var RequirementEnError = document.getElementById("RequirementEnError");
+
+        var dateid = document.getElementById("dateid");
+        var dateError = document.getElementById("dateError");
+
+        var timeid = document.getElementById("timeid");
+        var timeError = document.getElementById("timeError");
+
+        var durationid = document.getElementById("durationid");
+        var durationError = document.getElementById("durationError");
+
+
+        var imageid = document.getElementById("imageid");
+        var imageError = document.getElementById("imageError");
+
+        if (titleArId.value == "") {
+            titleArError.innerHTML = "يرجى كتابة العنوان";
+            // titleid.focus(); 
+            return false;
+        }
+        titleArError.innerHTML = "";
+
+        if (titleEnId.value == "") {
+            titleEnError.innerHTML = "يرجى كتابة العنوان انجليزي";
+            // titleid.focus(); 
+            return false;
+        }
+        titleEnError.innerHTML = "";
+
+        if (categoryId.value == "") {
+            categoryError.innerHTML = "يجب اختيار تخصص";
+            // titleid.focus(); 
+            return false;
+        }
+        categoryError.innerHTML = "";
+
+        if (languageId.value == "") {
+            languageError.innerHTML = "اللغة مطلوبه";
+            // titleid.focus(); 
+            return false;
+        }
+        languageError.innerHTML = "";
+
+        if (dateid.value == "") {
+            dateError.innerHTML = "يرجى تحديد تاريخ بداية الكورس";
+            // titleid.focus(); 
+            return false;
+        }
+        dateError.innerHTML = "";
+
+
+        if (timeid.value == "") {
+            timeError.innerHTML = "يرجى ا اختيار وقت الدورة  ";
+            return false;
+        }
+        timeError.innerHTML = "";
+
+        if (durationid.value == "") {
+            durationError.innerHTML = "يرجى تحديد مدة الدورة";
+            return false;
+        }
+        durationError.innerHTML = "";
+        if (descriptionArId.value == "") {
+            descriptionArError.innerHTML = "يرجى كتابة شرح عربي توضيحي عن الدورة";
+            return false;
+        }
+        descriptionArError.innerHTML = "";
+
+        if (descriptionEnId.value == "") {
+            descriptionEnError.innerHTML = "يرجى كتابة شرح انجليزي توضيحي عن الدورة";
+            return false;
+        }
+        descriptionEnError.innerHTML = "";
+
+        if (mahawir_arid.value == "") {
+            mahawirArError.innerHTML = "يرجى ادخال محاور الدورة عربي";
+            return false;
+        }
+        mahawirArError.innerHTML = "";
+
+        if (mahawir_enid.value == "") {
+            mahawirEnError.innerHTML = "يرجى ادخال محاور الدورة انجليزي";
+            return false;
+        }
+        mahawirEnError.innerHTML = "";
+
+
+
+
+
+
+
+
+
+
+
+
+        if (requirement_arid.value == "") {
+            requirementArError.innerHTML = "يرجى ادخال متطلبات الدورة عربي";
+            return false;
+        }
+        requirementArError.innerHTML = "";
+
+
+        if (requirement_enid.value == "") {
+            RequirementEnError.innerHTML = "يرجى ادخال متطلبات الدورة انجليزي";
+            return false;
+        }
+        RequirementEnError.innerHTML = "";
+
+
+
+
+        // if (imageid.value == "") {
+        //     imageError.innerHTML = "يرجى ارفاق صورة";
+        //     return false;
+        // }
+        // imageError.innerHTML = "";
+
+        // var allowedExtensionsImage = /(\.JPEG|\.JPG|\.PNG|\.GIF|\.TIF|\.TIFF)$/i;
+        // if (!allowedExtensionsImage.exec(imageid.value)) {
+        //     imageError.innerHTML = "  يجب أن يكون الأمتداد من نوع (.JPEG,.JPG,.PNG,.GIF,.TIF,.TIFF)   فقط";
+        //     imageid.value = '';
+        //     return false;
+        // }
+        // imageError.innerHTML = "";
+        // separateString()
+
+        $('.loader-container').show();
+        separateString()
+        // return false;
+    }
 
     function saveVideo(video, id, videopath, progres, hiddenclassss, videovalue) {
         $(function () {
@@ -408,7 +601,7 @@
                     if (data) {
                         $('.hiddenold').hide();
                         $('.' + hiddenclassss).show();
-                        $('#' + videopath).attr('src', "http://127.0.0.1:8000/img/courses/video/" + data);
+                        $('#' + videopath).attr('src', "https://sanad-qatar.qa/img/courses/video/" + data);
                         document.getElementById(videovalue).value = data;
                     }
 
@@ -420,143 +613,6 @@
         })
     }
 
-
-
-
-
-
-    function Validateallinput() {
-
-
-        var titleid = document.getElementById("titleid");
-        var titleError = document.getElementById("titleError");
-
-        var titlearid = document.getElementById("titlearid");
-        var titlearError = document.getElementById("titlearError");
-
-        var short_detailid = document.getElementById("short_detailid");
-        var short_detailError = document.getElementById("short_detailError");
-
-        // var short_detailid = document.getElementById("short_detailid");
-        // var short_detailError = document.getElementById("short_detailError");
-
-        var target_groupid = document.getElementById("target_groupid");
-        var target_groupError = document.getElementById("target_groupError");
-
-        var mahawirid = document.getElementById("mahawirid");
-        var mahawirError = document.getElementById("mahawirError");
-
-        var dateid = document.getElementById("dateid");
-        var dateError = document.getElementById("dateError");
-
-        var timeid = document.getElementById("timeid");
-        var timeError = document.getElementById("timeError");
-
-        var durationid = document.getElementById("durationid");
-        var durationError = document.getElementById("durationError");
-
-
-        var imageid = document.getElementById("imageid");
-        var imageError = document.getElementById("imageError");
-
-        if (titleid.value == "") {
-            titleError.innerHTML = "يرجى كتابة العنوان";
-            // titleid.focus(); 
-            return false;
-        }
-        titleError.innerHTML = "";
-
-        if (titlearid.value == "") {
-            titlearError.innerHTML = "يرجى كتابة العنوان انجليزي";
-            // titleid.focus(); 
-            return false;
-        }
-        titlearError.innerHTML = "";
-
-
-
-        if (short_detailid.value == "") {
-            short_detailError.innerHTML = "يرجى ادخال وصف قصير";
-            // titleid.focus(); 
-            return false;
-        }
-        short_detailError.innerHTML = "";
-
-
-        if (target_groupid.value == "") {
-            target_groupError.innerHTML = "يرجى ادخال الفئة المستهدفة";
-            // titleid.focus(); 
-            return false;
-        }
-        target_groupError.innerHTML = "";
-
-        if (mahawirid.value == "") {
-            mahawirError.innerHTML = "يرجى ادخال محاور الدورة";
-            // titleid.focus(); 
-            return false;
-        }
-        mahawirError.innerHTML = "";
-
-        if (dateid.value == "") {
-            dateError.innerHTML = "يرجى ادخال تاريخ بداية الكورس";
-            // titleid.focus(); 
-            return false;
-        }
-        dateError.innerHTML = "";
-
-        if (timeid.value == "") {
-            timeError.innerHTML = "يرجى ا اختيار وقت الدورة  ";
-            return false;
-        }
-        timeError.innerHTML = "";
-
-
-
-
-        // if (endDateid.value == "") {
-        //     endDateError.innerHTML = "يرجى ادخال تاريخ نهاية الكورس";
-        //     // titleid.focus(); 
-        //     return false;
-        // }
-        // endDateError.innerHTML = "";
-
-
-        if (durationid.value == "") {
-            durationError.innerHTML = "يرجى ادخال مدة الكورس";
-            // titleid.focus(); 
-            return false;
-        }
-        durationError.innerHTML = "";
-
-        // if(!/^[0-9]+$/.test(durationid.value)){
-        //   durationError.innerHTML = "الرجاء إدخال رقم فقط";
-        //   return false;
-        // }
-        // durationError.innerHTML = "";
-
-
-
-        if (imageid.value == "") {
-            imageError.innerHTML = "يرجى ارفاق صورة";
-            // titleid.focus(); 
-            return false;
-        }
-        imageError.innerHTML = "";
-
-        var allowedExtensionsImage = /(\.JPEG|\.JPG|\.PNG|\.GIF|\.TIF|\.TIFF)$/i;
-        if (!allowedExtensionsImage.exec(imageid.value)) {
-            imageError.innerHTML = "  يجب أن يكون الأمتداد من نوع (.JPEG,.JPG,.PNG,.GIF,.TIF,.TIFF)   فقط";
-
-            imageid.value = '';
-            // imageeid.focus(); 
-            return false;
-        }
-        imageError.innerHTML = "";
-
-
-        $('.loader-container').show();
-        // return false;
-    }
 
 
 

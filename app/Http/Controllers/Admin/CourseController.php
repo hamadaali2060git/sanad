@@ -97,8 +97,11 @@ class CourseController extends Controller
     // }
     public function coursesEdit($id)
     {
-        // dd('dddd');
-        $edit = Course::findOrFail($id);
+        $edit = Course::
+        with('courserequirements')
+        ->with('coursesubtitle')
+        ->where('id',$id)
+        ->first();
         $categories=Category::all();
         return view('admin.courses.edit',compact('edit','categories'));
     }
@@ -169,15 +172,26 @@ class CourseController extends Controller
         // $edit->video    = $video_name;
        
         $edit->save();
-
+        $sub_titles= SubTitle::where('course_id',$edit->id)->get();
+        foreach ($sub_titles as $subs) {         
+            $delete_sub = SubTitle::findOrFail($subs->id);
+            $delete_sub->delete();
+        }
+        $course_requirement= CourseRequirement::where('course_id',$edit->id)->get();
+        foreach($course_requirement as $requirement) {         
+            $delete_requirement = CourseRequirement::findOrFail($requirement->id);
+            $delete_requirement->delete();
+        }
         $length = count($request->mahawir_ar_name);
         if($length > 0)
         {
             for($i=0; $i<$length; $i++)
             {
+                
                 $add_lecture = new SubTitle;
                 $add_lecture->course_id    = $edit->id;
                 if(isset($request->mahawir_ar_name[$i])){
+                    
                     $add_lecture->name_ar = $request->mahawir_ar_name[$i];
                 }
 

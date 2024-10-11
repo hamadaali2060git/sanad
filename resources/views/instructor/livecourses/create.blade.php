@@ -377,7 +377,7 @@
           // div.classList.remove(hiddenclassss);
           if (data) {
             $('.' + hiddenclassss).show();
-            $('#' + videopath).attr('src', "http://127.0.0.1:8000/img/courses/video/" + data);
+            $('#' + videopath).attr('src', "https://sanad-qatar.qa/img/courses/video/" + data);
             document.getElementById(videovalue).value = data;
             // document.getElementById(video).value = 'video.png';
           }
@@ -421,8 +421,8 @@
     var descriptionEnId = document.getElementById("descriptionEn");
     var descriptionEnError = document.getElementById("descriptionEnError");
 
-    var target_groupid = document.getElementById("target_groupid");
-    var target_groupError = document.getElementById("target_groupError");
+    // var target_groupid = document.getElementById("target_groupid");
+    // var target_groupError = document.getElementById("target_groupError");
 
     var mahawirArId = document.getElementById("mahawirAr");
     var mahawirArError = document.getElementById("mahawirArError");
