@@ -100,11 +100,12 @@
 									    <th>#</th>
 									    <th>id</th>
 										<th class="text-center">اسم المدرب </th>
-										<th class="text-center">دورات </th>
-                                        <!-- <th class="text-center">رصيد المحفظه </th> -->
-										<th class="text-center">تحقق</th>
+										
+                    <th class="text-center">البريد الالكتروني </th>
+                    <th class="text-center">عدد الدورات </th>
+										<!-- <th class="text-center">تحقق</th>
 										<th class="text-center">معلق/ غير معلق</th>
-										<th class="text-center">محذوف / غير محذوف </th>
+										<th class="text-center">محذوف / غير محذوف </th> -->
 										<!-- <th class="text-center">العمليات</th> -->
 									</tr>
 								</thead>
@@ -117,12 +118,12 @@
 											<a href="{{url('admin/instructor-profile/'.$_item->id) }}">{{ $_item->name }}</a>
 										</td>
 										<td class="text-center">
-											{{ $_item->course_count }}
+                      {{ $_item->email }}
 										</td>
-										<!-- <td class="text-center">
-											
-										</td> -->
-										<td>
+										<td class="text-center">
+                      {{ $_item->course_count }}
+										</td>
+										<!-- <td>
                       <div class="status-toggle">
                         <input type="checkbox" data-id="{{ $_item->id }}" name="status"  class="status-switch" {{ $_item->status == 1 ? 'checked' : '' }}>
                       </div>
@@ -137,7 +138,7 @@
                       <div class="status-toggle">
                         <input type="checkbox" data-id="{{ $_item->id }}" name="blocked"  class="blocked-switch" {{ $_item->blocked == 1 ? 'checked' : '' }}>
                       </div>
-                    </td>
+                    </td> -->
 										
 										<!-- <td class="text-right">			
 											

@@ -14,6 +14,7 @@ class CreateInstructorSeeder extends Seeder
         $user = Instructor::create([
             'first_name' => 'instructor',
             'last_name' => 'instructor',
+            'name' => 'instructor',
             'mobile' => '12345',
             'email' => 'instructor@instructor.com',
             'password' => bcrypt('1234'),

@@ -8,7 +8,7 @@ class Category extends Model
 {
 
     public function courses(){
-        return $this->hasMany(Course::class,'category_id','id')->withCount('user_courses_joined');
+        return $this->hasMany(Course::class,'category_id','id')->where('status',1)->withCount('user_courses_joined');
     }
     public function scopeSelection($query)
     {
