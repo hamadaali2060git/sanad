@@ -2,17 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 // Route::get('/home', function () {
 //     return view('front.home');
 // });
@@ -24,6 +13,12 @@ Auth::routes();
 
 // Route::get('home', 'Admin/DashBoardController@index');
 
+
+Route::get('chats', 'ChatController@myChats');
+Route::get('chat/user/{id}/{instructorId}', 'ChatController@chatUserId')->name('chat/user');
+Route::get('chat/{instructorId}/create', 'ChatController@createStudentCat');
+
+
   Route::get('lang/{locale}', 'LocalizationController@index');
 
   Route::get('/', 'FrontController@index');
@@ -32,6 +27,7 @@ Auth::routes();
   Route::get('category/{sluge}', 'FrontController@coursesBycategory');
   Route::get('course/{slug}/{id}', 'FrontController@coursesDetails');
 
+  
   Route::get('my-profile', 'FrontController@myProfile');
   Route::post('updateprofile', 'FrontController@updateProfile')->name('updateprofile');
   Route::get('my-courses', 'FrontController@myCourses');
@@ -93,9 +89,3 @@ Auth::routes();
   ## signout student , instructor
   Route::post('signoutinstructors', 'Auth\InstructorLoginController@signOutInstructors')->name('signoutinstructors');
   ## end
-
-
-
-
-  // Route::post('signoutotudent', 'Auth\UserLoginController@signOutStudent')->name('signoutotudent');
-  // Route::post('register-new-instructor', 'Auth\InstructorLoginController@registerNewInstructor')->name('register-new-instructor');

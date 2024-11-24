@@ -12,12 +12,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // to add in table php artisan db:seed --class=PermissionTableSeeder
-        $this->call(PermissionTableSeeder::class);
+        // $this->call(PermissionTableSeeder::class);
 
         // to add in table php artisan db:seed --class=CreateAdminUserSeeder
-        $this->call(CreateAdminUserSeeder::class);
+        // $this->call(CreateAdminUserSeeder::class);
 
-        $this->call(SettingSeeder::class);
+        // $this->call(SettingSeeder::class);
+
+        // $this->call(ChatsTableSeeder::class);
+        
+        $this->call(MessagesTableSeeder::class);
     }
 
     

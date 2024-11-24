@@ -36,6 +36,7 @@ App::setLocale($langg);
         <i class="fas fa-video pr-2"></i> {{__('front.My Courses')}}
     </a>
 
+
     <!-- <a class="profile-links" href="mywishlist.html">
                             <i class="fas fa-heart pr-2"></i> My Wishlist
                         </a> -->
@@ -44,6 +45,12 @@ App::setLocale($langg);
 
     <a class="profile-links" href="{{url('student-password')}}">
         <i class="fas fa-money-check"></i> {{__('front.Update Password')}}
+    </a>
+    <a class="profile-links" href="{{url('chats')}}">
+        <!-- <i class="fas fa-video pr-2"></i> -->
+
+        <!-- <i class="fa-solid fa-message-middle fa-fw"></i> -->
+        الدردشة
     </a>
     <div class=" bg-light text-center mt-2 pt-2 pb-2">
         <a class="dropdown-item main-color font-weight-600 text-medium" href="{{ route('signoutinstructors') }}"

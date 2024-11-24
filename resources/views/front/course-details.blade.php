@@ -291,24 +291,28 @@
                     </ul>
                 </div>
                 <div class="col-12 mt-1">
-                    <!-- <h6> مقدم الدورة
+                    <h6> مقدم الدورة
 
                     </h6>
 
                     <div class="row">
                         <div class="col-md-2 mb-4">
-                            <img src="img/instructor.jpg" class="rounded-circle instructor-img">
+                            <img src="{{asset('img/profiles/profile.png') }}" class="rounded-circle instructor-img">
                         </div>
                         <div class="col-md-10">
                             <h6 class="font-weight-normal mb-2"><a href="#"
                                     class="main-color">{{$course->course_instructor->name}}
                                 </a></h6>
-                            <p class="font-weight-bold  text-dark mb-2">عن المدرب
-                            </p>
+                            <p class="font-weight-bold  text-dark mb-2">عن المدرب</p>
+                            chat/{instructorId}/create
+                            <a href="{{url('chat/'.$course->course_instructor->id.'/create')}}" class="">
+                                تواصل مع المدرب
+                                <!-- <i class="fas fa-rocketchat"></i> -->
+                            </a>
                             <p>{{$course->course_instructor->detail}}
                             </p>
                         </div>
-                    </div> -->
+                    </div>
 
                     <div class="row justify-content-center">
                         <!-- <a href="#"><i class="fas fa-flag"></i> Report</a> -->

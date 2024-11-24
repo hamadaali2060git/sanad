@@ -16,6 +16,7 @@ use App\Rules\ReCaptcha;
 
 class FrontController extends Controller
 {
+    
     public function contactForm()
     {
         return view('front.contact-form');
@@ -103,6 +104,8 @@ class FrontController extends Controller
         // dd($courses_joined);
         
     }
+    
+   
     public function myProfile()
     {
         $user = Auth::guard('instructors')->user();

@@ -66,4 +66,14 @@ class Instructor extends Authenticatable implements JWTSubject
         	'detail'  . ' as detail',
         );
     }
+
+
+    public function chats()
+    {
+        return $this->belongsToMany(Chat::class, 'chat_user');
+    }
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'sender_id');
+    }
 }

@@ -37,9 +37,6 @@ Route::post('savevideo', 'Instructor\LiveCourseController@addvideostore')->name(
 Route::get('removeVideoSessionItem/{id}', 'Instructor\CourseController@removeVideoSessionItem');
 
 
-Route::post('curriculas-savevideo', 'Instructor\CurriculumController@addvideostore')->name('curriculas-savevideo');
-Route::get('curriculas-removeVideoSession/{id}', 'Instructor\CurriculumController@removeVideoSession');
-
 
 
 
@@ -58,28 +55,18 @@ Route::get('/said', function () {
 });
 Route::group(['middleware' => 'checkInstructor','namespace' => 'Instructor','prefix' => 'instructor'], function () {
     
+    Route::get('chats', 'ChatController@myChats');
+    Route::get('chat/user/{id}', 'ChatController@chatUserId')->name('instructor-chat/user');
+    Route::get('chat/{instructorId}/create', 'ChatController@createStudentCat');
+
     Route::get('/said', function () {
         return view('front.home');
     });
-    Route::get('indexxx','CurriculumController@indexxx');
-	
-	
-	Route::get('getsubcategory/{id}','CourseController@getSubCategory');
-	Route::get('getchildcategory/{id}','CourseController@getChildCategory');
-
+  
     Route::resource('students','StudentController');
     Route::resource('dashboard','DashBoardController');
 
-
-    // Route::middleware(['checkInstructor'])->group(function(){
-
-        Route::resource('stories','BookController');
-    // });
-    
-    // Route::post('add-video-to-session', 'ProgressBarController@addVideoToSession');
-
-    Route::get('bills', 'BillController@index');
-
+   
     Route::get('video_views', 'VideoViewController@index');   
     Route::get('video_views_curriculums', 'VideoViewController@indexCurriculums');   
     
@@ -94,31 +81,8 @@ Route::group(['middleware' => 'checkInstructor','namespace' => 'Instructor','pre
     Route::post('profile/update','InstructorController@updateProfile');
     Route::post('changepassword', 'InstructorController@studentChangePassword')->name('instructor.changepassword');
 
-    Route::get('report/sales','ReportController@sales');
-    Route::get('report/transfers','ReportController@transfers');
-    Route::get('report/statistics','ReportController@statistics');
-   	Route::get('getbook/{id}', 'BookController@getbook');
-
-    Route::get('print-certificates', 'ProfileController@printCertificates');
-
-    Route::get('bankdetails', 'ProfileController@bankDetails');
-    Route::get('western-info', 'ProfileController@westernInfo');
-    Route::post('update-western-info', 'ProfileController@updateWesternInfo')->name('update-western-info');
     
-    Route::post('bankdetails','ProfileController@updateBankDetails')->name('bankdetails');
-   	Route::get('getcity/{id}', 'ProfileController@getCity');
-
-    
-    Route::post('profile/update/documents','ProfileController@updateDocuments');
-
-    Route::post('profile/update/certificates','ProfileController@updateCertificates');
-
-    Route::post('profile/update/cv','ProfileController@updateCv');
-
-    
-    
-	Route::get('agreements', 'ProfileController@agreements')->name('agreements');	
-          	
+    Route::get('print-certificates', 'ProfileController@printCertificates');   	
 });	
 
 

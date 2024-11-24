@@ -1,5 +1,5 @@
-    <div class="main-menu-content">
-      <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+<div class="main-menu-content">
+    <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
         <!-- <li class=" nav-item"><a href="#"><i class="la la-bolt"></i><span class="menu-title" data-i18n="nav.flot_charts.main">الرئيسية</span></a>
           <ul class="menu-content">            
             <li  class="{{ Request::is('admin/dashboard') ? 'active' : '' }}"> 
@@ -7,8 +7,8 @@
             </li>
           </ul>
         </li> -->
-       
-      
+
+
         <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
             <a href="{{url('/')}}">
                 <i class="la la-envelope"></i><span class="menu-title" data-i18n="">الذهاب للموقع</span></a>
@@ -29,9 +29,10 @@
             <a href="{{url('instructor/western-info')}}">
                 <i class="la la-envelope"></i><span class="menu-title" data-i18n="">معلومات Western Union</span></a>
         </li> -->
-        
+
         <li class="nav-item {{ Request::is('instructor/courses') ? 'active' : '' }}">
-            <a href="{{ url('instructor/courses') }}"> <i class="la la-envelope"></i><span class="menu-title" data-i18n=""> الدورات الاونلاين</span></a>
+            <a href="{{ url('instructor/courses') }}"> <i class="la la-envelope"></i><span class="menu-title"
+                    data-i18n=""> الدورات الاونلاين</span></a>
         </li>
         <!-- <li class="nav-item {{ Request::is('instructor/terms') ? 'active' : '' }}">
             <a href="{{url('instructor/terms')}}">
@@ -45,6 +46,12 @@
                 <span class="menu-title" data-i18n=""> فيديوهات إرشادية</span>
             </a>
         </li>
+        <li class="nav-item {{ Request::is('instructor/chats') ? 'active' : '' }}">
+            <a href="{{url('instructor/chats')}}">
+                <i class="la la-envelope"></i>
+                <span class="menu-title" data-i18n=""> الدردشة </span>
+            </a>
+        </li>
         <!-- <li class="nav-item {{ Request::is('instructor/bills') ? 'active' : '' }}">
             <a href="{{ url('instructor/bills') }}">
                 <i class="la la-envelope"></i><span class="menu-title" data-i18n=""> ارباحي</span></a>
@@ -53,26 +60,26 @@
             <a href="{{ url('instructor/transfers') }}">
                 <i class="la la-envelope"></i><span class="menu-title" data-i18n=""> تحويلات البنك</span></a>
         </li> -->
-        
 
-        
-        
-        
-       
+
+
+
+
+
         <!-- <li class="nav-item {{ Request::is('instructor/agreements') ? 'active' : '' }}">
             <a href="{{url('instructor/agreements')}}">
                 <i class="la la-envelope"></i>
                 <span class="menu-title" data-i18n="">اتفاقية المدرب</span>
             </a>
         </li> -->
-       
-
-        
 
 
-       
-        
-        
-      </ul>
-    </div>
-  </div>
+
+
+
+
+
+
+    </ul>
+</div>
+</div>
