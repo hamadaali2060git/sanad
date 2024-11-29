@@ -304,7 +304,7 @@
                                     class="main-color">{{$course->course_instructor->name}}
                                 </a></h6>
                             <p class="font-weight-bold  text-dark mb-2">عن المدرب</p>
-                            chat/{instructorId}/create
+
                             <a href="{{url('chat/'.$course->course_instructor->id.'/create')}}" class="">
                                 تواصل مع المدرب
                                 <!-- <i class="fas fa-rocketchat"></i> -->
