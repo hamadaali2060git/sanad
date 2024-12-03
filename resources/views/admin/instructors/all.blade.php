@@ -65,32 +65,32 @@
                   <div class="card-body card-dashboard">
                     <div class="card-body">
                         
-                        <div class="row">
+                        <!-- <div class="row">
 	                        <div class="col-md-10">
 	                        	<form action="{{url('admin/instructor-filter')}}" method="get">
-	                                <!--@csrf-->
-									<div class="row form-row">
-										<div class="col-md-6">
-											<div class="form-group">
-												<label>بحث عن مدربين </label>
-												<select name="filter" class="form-control select2-diacritics "  placeholder="بحث">
-                                                    <option  value="status">تم التحقق من شخصيتهم</option>
-                                                    <option  value="suspended">المعلقين</option>
-                                                    <option  value="blocked">المحذوفين</option>
-                                                    <option  value="published"> الناشرين دورة علي الاقل</option>
-                                                </select>
-											</div>
-										</div>
-										
-										
-										<div class="col-md-4" style="margin-top: 5px">
-											<label> </label>
-											<button type="submit" class="btn btn-primary btn-block"> بحث  </button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
+	                                @csrf
+                              <div class="row form-row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label>بحث عن مدربين </label>
+                                    <select name="filter" class="form-control select2-diacritics "  placeholder="بحث">
+                                                                <option  value="status">تم التحقق من شخصيتهم</option>
+                                                                <option  value="suspended">المعلقين</option>
+                                                                <option  value="blocked">المحذوفين</option>
+                                                                <option  value="published"> الناشرين دورة علي الاقل</option>
+                                                            </select>
+                                  </div>
+                                </div>
+                                
+                                
+                                <div class="col-md-4" style="margin-top: 5px">
+                                  <label> </label>
+                                  <button type="submit" class="btn btn-primary btn-block"> بحث  </button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div> -->
 				        <br>
 				        
 						<div class="table-responsive">
