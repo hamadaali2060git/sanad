@@ -16,6 +16,9 @@ use App\Courses_joined;
 use Mail;
 use App\Wallet;
 use Illuminate\Support\Facades\File;
+
+use Crypt;
+use Hash;
 class InstructorController extends Controller
 {
     public function __construct()
@@ -26,6 +29,16 @@ class InstructorController extends Controller
     {
         $instructors=Instructor::where('type','instructor')->orderBy('id', 'DESC')->get();
         return view('admin.instructors.allemails',compact('instructors'));
+    }
+    
+    public function students()
+    {
+        $students=Instructor::where('type','student')->orderBy('id', 'DESC')->get();
+        // foreach ($students as $items) {
+        //     $items->course_count=Course::where('user_id',$items->id)->count();
+        // }
+        // dd($instructors);
+        return view('admin.students.index',compact('students'));
     }
     public function index()
     {
@@ -167,81 +180,42 @@ class InstructorController extends Controller
         $delete->delete();
         return back()->with("message",'تم الحذف بنجاح'); 
     }
-
-    public function profile($id)
+    public function instructorProfile($id)
     {
         $instructor = Instructor::findOrFail($id);
-        $country= Country::where('id',$instructor->countryId)->first();
-        $instructor->country=$country->name;
+        // $country= Country::where('id',$instructor->countryId)->first();
+        // $instructor->country=$country->name;
         
-        $courses = Course::where('userId',$instructor->id)->get();
-        $straights = Straight::where('userId',$id)->get();
+        $courses = Course::where('user_id',$id)->get();
+        // $straights = Straight::where('userId',$id)->get();
         
-        // $join_courses = Course::where('userId',$instructor->id)->get();
+        $join_courses = Course::where('user_id',$instructor->id)->get();
         // $join_courses_live = Straight::where('userId',$instructor->id)->get();
         
         $join_courses=[];
         foreach ($courses as $items) {
-            $join_co=Courses_joined::where('courseId',$items->id)->first();
+            $join_co=Courses_joined::where('course_id',$items->id)->first();
             if($join_co){
                 $join_courses[]= $join_co;
             }
         }
         
         foreach ($join_courses as $join_cours) {
-            $join_cours->course=Course::where('id',$join_cours->courseId)->first();
-            $join_cours->student=Instructor::where('id',$join_cours->userId)->first();
+            $join_cours->course=Course::where('id',$join_cours->course_id)->first();
+            $join_cours->student=Instructor::where('id',$join_cours->student_id)->first();
              
         }
 
 
-
-        $join_courses_live=[];
-        foreach ($straights as $course_live) {
-            $join_co=Courses_joined::where('liveId',$course_live->id)->first();
-            if($join_co){
-               $join_courses_live[]= $join_co;
-            }
-        }
-        foreach ($join_courses_live as $join_cours) {
-            $join_cours->course=Straight::where('id',$join_cours->liveId)->first();
-            $join_cours->student=Instructor::where('id',$join_cours->userId)->first();
-        }
-        // dd($join_courses);
-
-
-        $bankdetails=Bank::where('userId',$instructor->id)->first();
-        $country= Country::All();
+        return view('admin.instructors.instructor-profile',compact('instructor','courses','join_courses'));
+    }
+    public function studentProfile($id)
+    {
+        $student = Instructor::findOrFail($id);
         
         
-        $cities=City::all();
-        foreach ($cities as $item) {
-            $item->country= Country::where('id',$item->countryId)->first();
-        }
-
-        // $reviews=Review::where('userId',$instructor->id)->get();
-        // foreach ($reviews as $item) {
-        //     $item->instructor= Instructor::where('id',$item->userId)->first();
-        //     $item->course= Course::where('id',$item->courseId)->first();
-        // }
-
-        $reviews=[];
-        foreach ($courses as $items) {
-            $reviews_course=Review::where('courseId',$items->id)->first();
-            if($reviews_course){
-               $reviews[]= $reviews_course;
-            }
-        }
        
-        foreach ($reviews as $review) {
-            $review->course=Course::where('id',$review->courseId)->first();
-            $review->student=Instructor::where('id',$review->userId)->first();
-             
-        }
-        // $straights=Straight::where('courseId',$items->id)->first();;
-        // dd($reviews);
-        return view('admin.instructors.instructor-profile',compact('instructor','courses','straights',
-            'join_courses','join_courses_live','bankdetails','country','cities','reviews'));
+        return view('admin.students.student-profile',compact('student'));
     }
     
     public function instructorNotifaction()
@@ -249,7 +223,39 @@ class InstructorController extends Controller
         $instructors= Instructor::where('type','instructor')->get();
         return view('admin.instructors.notifaction',compact('instructors'));
     }
+    
+    public function instructorChangePassword(Request $request){
+        $user=instructor::findOrFail($request->id);
+        // $this->validate($request, [
+        //     'current-password'     => 'required',
+        //     'new-password'     => 'required',
+        //     // 'confirm_password' => 'required|same:new_password',
+        // ]);
+        // dd($user);
+        $this->validate( $request,[
+                'current-password'=>'required',
+                'new-password'=>'required',
+            ],
+            [
+                'current-password'=>'required',
+                'new-password'=>'required',
+            ]
+        );
 
+        // dd('ugutg');
+        if (!(Hash::check($request->get('current-password'), $user->password))) {
+            return redirect()->back()->with("errorss","كلمة المرور الحالية لا تتطابق مع كلمة المرور التي قدمتها. حاول مرة اخرى.");
+        }
+
+        if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
+            return redirect()->back()->with("errorss","لا يمكن أن تكون كلمة المرور الجديدة هي نفسها كلمة مرورك الحالية. الرجاء اختيار كلمة مرور مختلفة.");
+        }
+        // dd('veferfrr');
+
+        $user->password = bcrypt($request->get('new-password'));
+        $user->save();
+        return redirect()->back()->with("message","تم تغيير الرقم السري بنجاح !");
+    }
     public function updateProfile(Request $request)
     {
         // dd($request->id);

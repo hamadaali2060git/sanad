@@ -19,7 +19,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'
     Route::post('courses/update','CourseController@update')->name('courses-update');
     Route::post('courses/delete','CourseController@destroy')->name('courses-delete');
     Route::get('course-joined/{id}', 'CourseController@courseJoined');
-    Route::get('course-joined-status', 'CourseController@updateStatus')->name('course-joined-status');
+    Route::get('course-joined-status', 'CourseController@updateStatus')->name('course.joined.status');
 
 
 
@@ -34,6 +34,12 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'
 
    Route::get('instructor/update/status', 'InstructorController@updateStatus')->name('instructor.update.status');
    Route::resource('instructors','InstructorController');
+   Route::get('students', 'InstructorController@students');
+    
+    Route::get('instructor-profile/{id}', 'InstructorController@instructorProfile')->name('instructor-profile');
+    Route::get('students-profile/{id}', 'InstructorController@studentProfile')->name('student-profile');
+    Route::post('instructor-change-password', 'InstructorController@instructorChangePassword')->name('instructor-change-password');
+
 
 
     // Route::get('about', 'ProfileController@about');

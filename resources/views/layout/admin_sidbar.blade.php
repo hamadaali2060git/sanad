@@ -30,6 +30,11 @@
         <i class="la la-envelope"></i><span class="menu-title" data-i18n=""> المدربين</span>
       </a>
     </li>
+    <li class="nav-item {{ Request::is('admin/students') ? 'active' : '' }}">
+      <a href="{{url('admin/students')}}">
+        <i class="la la-envelope"></i><span class="menu-title" data-i18n=""> الطلاب</span>
+      </a>
+    </li>
     <li class="nav-item {{ Request::is('admin/sliders') ? 'active' : '' }}">
       <a href="{{url('admin/sliders')}}"><i class="la la-envelope"></i><span class="menu-title"
           data-i18n="">السلايدر</span></a>
@@ -51,7 +56,7 @@
         <i class="la la-envelope"></i><span class="menu-title" data-i18n="">الاعدادات</span>
       </a>
     </li>
-    
+
     <li class="nav-item {{ Request::is('admin/socials') ? 'active' : '' }}">
       <a href="{{url('admin/socials')}}">
         <i class="la la-envelope"></i><span class="menu-title" data-i18n="">حسابات السوشيال</span>
@@ -68,7 +73,7 @@
         <i class="la la-envelope"></i><span class="menu-title" data-i18n="">المستخدمين</span>
       </a>
     </li> -->
-    
+
 
 
     <!-- <li class="nav-item {{ Request::is('admin/cities') ? 'active' : '' }}">

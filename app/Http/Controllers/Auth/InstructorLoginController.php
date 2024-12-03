@@ -53,7 +53,7 @@ class InstructorLoginController extends Controller
                         return redirect('home');
                     }
                 }else{
-                    return redirect('user-login')->with("errorss", 'بيانات الدخول غير صحيحةة');
+                    return redirect('user-login')->with("errorss", 'بيانات الدخول غير صحيحة');
                 }
             // }
         }else{

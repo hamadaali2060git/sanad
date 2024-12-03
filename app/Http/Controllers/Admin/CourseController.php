@@ -10,6 +10,7 @@ use App\SubTitle;
 use App\CourseRequirement;
 use Illuminate\Support\Str;
 use App\Courses_joined;
+use App\Instructor;
 class CourseController extends Controller
 {
     public function __construct()

@@ -67,28 +67,7 @@
                         
                         <div class="row">
 	                        <div class="col-md-10">
-	                        	<form action="{{url('admin/instructor-filter')}}" method="get">
-	                                <!--@csrf-->
-									<div class="row form-row">
-										<div class="col-md-6">
-											<div class="form-group">
-												<label>بحث عن مدربين </label>
-												<select name="filter" class="form-control select2-diacritics "  placeholder="بحث">
-                                                    <option  value="status">تم التحقق من شخصيتهم</option>
-                                                    <option  value="suspended">المعلقين</option>
-                                                    <option  value="blocked">المحذوفين</option>
-                                                    <option  value="published"> الناشرين دورة علي الاقل</option>
-                                                </select>
-											</div>
-										</div>
-										
-										
-										<div class="col-md-4" style="margin-top: 5px">
-											<label> </label>
-											<button type="submit" class="btn btn-primary btn-block"> بحث  </button>
-										</div>
-									</div>
-								</form>
+	                        	
 							</div>
 						</div>
 				        <br>
@@ -96,50 +75,30 @@
 						<div class="table-responsive">
 		                    <table class="table table-striped table-bordered keytable-integration">
 		                        <thead>
-									<tr>
-									    <th>#</th>
-									    <th>id</th>
-										<th class="text-center">اسم المدرب </th>
-										
-                    <th class="text-center">البريد الالكتروني </th>
-                    <th class="text-center">عدد الدورات </th>
-										<!-- <th class="text-center">تحقق</th>
-										<th class="text-center">معلق/ غير معلق</th>
-										<th class="text-center">محذوف / غير محذوف </th> -->
-										<th class="text-center">العمليات</th>
-									</tr>
-								</thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th>id</th>
+                                <th class="text-center">اسم الطالب </th>
+                                
+                                <th class="text-center">البريد الالكتروني </th>
+                                <!-- <th class="text-center">عدد الدورات </th> -->
+                                <!-- <th class="text-center">تحقق</th>
+                                <th class="text-center">معلق/ غير معلق</th>
+                                <th class="text-center">محذوف / غير محذوف </th> -->
+                                <th class="text-center">العمليات</th>
+                              </tr>
+                            </thead>
 								<tbody>
-									@foreach ($instructors as $key=>$_item)
+									@foreach ($students as $key=>$_item)
 									<tr>	
 									    <td>{{$key}}</td>
 									    <td >{{ $_item->id }}</td>
 										<td class="text-center" style="width:190px !important;">
-											<a href="{{url('admin/instructor-profile/'.$_item->id) }}">{{ $_item->name }}</a>
+											<a href="{{url('admin/students-profile/'.$_item->id) }}">{{ $_item->name }}</a>
 										</td>
 										<td class="text-center">
                       {{ $_item->email }}
 										</td>
-										<td class="text-center">
-                      {{ $_item->course_count }}
-										</td>
-										<!-- <td>
-                      <div class="status-toggle">
-                        <input type="checkbox" data-id="{{ $_item->id }}" name="status"  class="status-switch" {{ $_item->status == 1 ? 'checked' : '' }}>
-                      </div>
-                    </td>
-										
-										<td>
-                      <div class="status-toggle">
-                        <input type="checkbox" data-id="{{ $_item->id }}" name="suspended"  class="suspended-switch" {{ $_item->suspended == 1 ? 'checked' : '' }}>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="status-toggle">
-                        <input type="checkbox" data-id="{{ $_item->id }}" name="blocked"  class="blocked-switch" {{ $_item->blocked == 1 ? 'checked' : '' }}>
-                      </div>
-                    </td> -->
-										
 										<td class="text-right">			
 											
 											<a  data-toggle="modal" data-catid="{{ $_item->id }}" data-target="#delete" class="delete-course">
