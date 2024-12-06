@@ -172,6 +172,7 @@ class CourseController extends Controller
         // $edit->image    = $file_name;
         // $edit->video    = $video_name;
        
+        $edit->meeting_url    = $request->meeting_url;
         $edit->save();
         $sub_titles= SubTitle::where('course_id',$edit->id)->get();
         foreach ($sub_titles as $subs) {         

@@ -159,8 +159,8 @@
                     <a href="{{url('courses/joined/'.$course->course_instructor->id.'/'.$course->id)}}"
                         class="btn header-btn w-100"> أشترك الان - {{$course->price}} ر.ق </a>
                     @else
-                    <a href="#" class="btn header-btn w-100"> مشترك بالفعل -
-                        {{$course->price}} ر.ق </a>
+                    <p class="btn header-btn w-100"> مشترك بالفعل
+                    </p>
                     @endif
                     @else
                     <a href="{{route('user-login')}}" class="btn header-btn w-100"> أشترك

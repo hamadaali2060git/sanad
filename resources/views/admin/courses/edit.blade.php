@@ -341,6 +341,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <label>رابط الاجتماع (zoom, meet,....)</label>
+                                    <input type="text" name="meeting_url" class="form-control"
+                                        value="{{$edit->meeting_url}}" id="languageid">
+                                    @error('language')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                    <span id="languageError" style="color: red;"></span>
+                                </div>
                             </div>
                             <!--<div class="col-md-12"><hr/></div>-->
 

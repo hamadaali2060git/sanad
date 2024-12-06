@@ -142,24 +142,28 @@ class FrontController extends Controller
 
 
 
-        $courses_joined = Courses_joined::where('student_id',$user->id)->latest()->get();
-        $courses=[];
-        foreach ($courses_joined as $item) {
-            $course = Course::with('course_instructor')
-                         ->with('categories')
-                         ->with('course_requirements')
-                         ->with('course_subtitle')
-                         ->with('user_courses_joined')
-                         ->with('user_joined')
-                         ->selection()
-                         ->where('id',$item->course_id)
-                         ->first();
+        // $courses_joined = Courses_joined::where('student_id',$user->id)->latest()->get();
+        // $courses=[];
+        // foreach ($courses_joined as $item) {
+        //     $course = Course::with('course_instructor')
+        //                  ->with('categories')
+        //                  ->with('course_requirements')
+        //                  ->with('course_subtitle')
+        //                  ->with('user_courses_joined')
+        //                  ->with('user_joined')
+        //                  ->selection()
+        //                  ->where('id',$item->course_id)
+        //                  ->first();
 
-            if($course)
-                $courses[]=$course;
-        }
+        //     if($course)
+        //         $courses[]=$course;
+        // }
 
-        return view('front.mycourses',compact('user','courses'));
+        $courses_joined = Courses_joined::where('student_id',$user->id)
+                            ->with('courses')
+                            ->latest()->get();
+        // dd($courses);
+        return view('front.mycourses',compact('user','courses_joined'));
     }
     public function instructors()
     {

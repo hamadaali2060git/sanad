@@ -38,34 +38,34 @@
                     </div>
                     <div class="row featured-courses">
                         <!-- start features box item -->
-                        @foreach ($courses as $key => $course)
+                        @foreach ($courses_joined as $key => $course_joined)
                         <div class="col-12 col-lg-4 col-md-6">
-                            <a href="{{url('course/'.$course->slug.'/'.$course->id)}}">
-                                <img src="{{asset('img/courses/'.$course->image) }}" class="img-fluid">
+                            <a href="{{url('course/'.$course_joined->courses->slug.'/'.$course_joined->courses->id)}}">
+                                <img src="{{asset('img/courses/'.$course_joined->courses->image) }}" class="img-fluid">
                             </a>
-                            <a href="{{url('course/'.$course->slug.'/'.$course->id)}}">
+                            <a href="{{url('course/'.$course_joined->courses->slug.'/'.$course_joined->courses->id)}}">
                                 <div class="bg-light">
 
-                                    <p class="text-dark font-weight-bold mb-2">{{$course->title}}</p>
+                                    <p class="text-dark font-weight-bold mb-2">{{$course_joined->courses->title}}</p>
 
                                     <div class="featured-date mb-2">
                                         <i class="fas fa-calendar-alt"></i>
-                                        <span>{{$course->date}}</span>
+                                        <span>{{$course_joined->courses->date}}</span>
                                     </div>
 
 
                                     <div class="featured-date mb-2">
                                         <i class="fas fa-money-bill-alt"></i>
-                                        <span> @if($course->price !=0)
-                                            {{$course->price}} {{__('front.currency')}}
+                                        <span> @if($course_joined->courses->price !=0)
+                                            {{$course_joined->courses->price}} {{__('front.currency')}}
                                             @else
                                             {{__('front.free')}}
                                             @endif</span>
                                     </div>
                                     <p class=" font-weight-bold mb-2 text-center">
-                                        @if($course->meeting_url)
-                                        <a  class="text-info" href="{{url($course->meeting_url)}}">
-                                           رابط حضور الدوره 
+                                        @if($course_joined->courses->meeting_url)
+                                        <a class="text-info" href="{{url($course_joined->courses->meeting_url)}}">
+                                            رابط حضور الدوره
                                         </a>
                                         @endif
                                     </p>
